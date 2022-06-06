@@ -66,7 +66,7 @@ export default function Home() {
                     <Link to={"/category/" + cat.id}>
                       <img
                         className="categoryImage"
-                        src={reactapp+ "/images/" + cat.url}
+                        src={ "/images/" + cat.url}
                       ></img>
                       <h4 className="categoryTitle">{cat.name}</h4>
                     </Link>
@@ -93,7 +93,7 @@ export default function Home() {
                     {" "}
                     <img
                       className="productImage"
-                      src={reactapp+ "/images/" + product.url}
+                      src={ "/images/" + product.url}
                     ></img>
                     <h4 className="productTitle">{product.name}</h4>
                   </Link>
@@ -111,7 +111,7 @@ export default function Home() {
                   {" "}
                   <img
                     className="productImage"
-                    src={reactapp+"/images/" + product.url}
+                    src={"/images/" + product.url}
                   ></img>
                   <h4 className="productTitle">{product.name}</h4>
                 </Link>
