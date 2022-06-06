@@ -4,6 +4,7 @@ import axios from "axios";
 import { useState, useEffect, useContext } from "react";
 import { UserContext } from "../../userContext";
 import { CartContext } from "../../cartContext";
+import { Link } from "react-router-dom";
 
 import { useNavigate } from "react-router-dom";
 import logo from "../../images/logo.png";
@@ -173,7 +174,7 @@ export default function Topbar() {
                 return (
                   <>
                     <li>
-                      <a href={"/category/" + cat.id}>{cat.name}</a>
+                      <Link to={"/category/" + cat.id}>{cat.name}</Link>
                     </li>
                   </>
                 );

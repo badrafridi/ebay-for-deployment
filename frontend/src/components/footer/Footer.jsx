@@ -1,26 +1,45 @@
-import React from "react";
+import { useState, useEffect, useContext } from "react";
 import "./footer.css";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
+  const api = process.env.REACT_APP_API;
+  const [categories, setCategories] = useState([]);
+
+  const getcategories = () => {
+    axios({
+      method: "GET",
+      withCredentials: true,
+      url: `${api + "/getallcategories"}`,
+    })
+      .then((res) => {
+        setCategories(res.data.row);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    getcategories();
+  }, []);
+
   return (
     <div className="footer">
       <div>
         <h3>Important Links</h3>
         <ul className="ulNoStyle">
           <li>
-            <a href="">Page</a>
+            <Link to="/products">All Products</Link>
           </li>
           <li>
-            <a href="">Page</a>
+            <Link to="/categories">Categories</Link>
           </li>
           <li>
-            <a href="">Page</a>
+            <Link to="/cart">Cart</Link>
           </li>
           <li>
-            <a href="">Page</a>
-          </li>
-          <li>
-            <a href="">Page</a>
+            <Link to="/account">Account</Link>
           </li>
         </ul>
       </div>
@@ -28,37 +47,30 @@ export default function Footer() {
         <h3>My Account</h3>
         <ul className="ulNoStyle">
           <li>
-            <a href="">Profile</a>
+            <Link to="/account">Profile</Link>
           </li>
           <li>
-            <a href="">Orders</a>
+            <Link to="/account">Orders</Link>
           </li>
           <li>
-            <a href="">History</a>
+            <Link to="/account">History</Link>
           </li>
           <li>
-            <a href="">My Products</a>
+            <Link to="/account">My Products</Link>
           </li>
         </ul>
       </div>
       <div>
         <h3>Categories</h3>
         <ul className="ulNoStyle">
-          <li>
-            <a href="">Iphone</a>
-          </li>
-          <li>
-            <a href="">Watches</a>
-          </li>
-          <li>
-            <a href="">Glasses</a>
-          </li>
-          <li>
-            <a href="">Cars</a>
-          </li>
-          <li>
-            <a href="">Houses</a>
-          </li>
+          {categories &&
+            categories.slice(0, 6).map((cat) => {
+              return (
+                <>
+                  <Link to={"/category/" + cat.id}>{cat.name}</Link>
+                </>
+              );
+            })}
         </ul>
       </div>
       <div>
