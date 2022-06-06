@@ -4,6 +4,8 @@ import axios from "axios";
 
 export default function Products() {
   const api = process.env.REACT_APP_API;
+  const reactapp = process.env.REACT_APP;
+
 
   const [allproducts, setAllproducts] = useState([]);
 
@@ -35,7 +37,7 @@ export default function Products() {
                   {" "}
                   <img
                     className="productImage"
-                    src={"http://localhost:4000/images/" + product.url}
+                    src={reactapp+"/images/" + product.url}
                   ></img>
                   <h4 className="productTitle">{product.name}</h4>
                 </Link>

@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 export default function New_product() {
   const api = process.env.REACT_APP_API;
 
+
   const name = useRef();
   const price = useRef();
   const description = useRef();

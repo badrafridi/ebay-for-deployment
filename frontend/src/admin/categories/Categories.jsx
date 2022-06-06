@@ -6,6 +6,8 @@ import swal from "sweetalert";
 
 export default function Categories() {
   const api = process.env.REACT_APP_API;
+  const reactapp = process.env.REACT_APP;
+
   const [categories, setCategories] = useState();
 
   const name = useRef();
@@ -118,7 +120,7 @@ export default function Categories() {
                     <Link to={"/category/" + cat.id}>
                       <img
                         className="categoryImage"
-                        src={"http://localhost:4000/images/" + cat.url}
+                        src={reactapp+"/images/" + cat.url}
                       ></img>
                       <h4 className="categoryTitle">{cat.name}</h4>
                     </Link>

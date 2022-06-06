@@ -9,6 +9,7 @@ export default function Home() {
   const [allproducts, setAllproducts] = useState([]);
   const [categories, setCategories] = useState();
   const api = process.env.REACT_APP_API;
+  const reactapp = process.env.REACT_APP;
 
   const getAllcategories = () => {
     axios({
@@ -31,10 +32,6 @@ export default function Home() {
       url: `${api + "/allproducts"}`,
     })
       .then((res) => {
-        console.log('this is the response');
-        console.log(res)
-        console.log(allproducts)
-        console.log({allProducts})
         setAllproducts(res.data.row);
       })
       .catch((error) => {
@@ -69,7 +66,7 @@ export default function Home() {
                     <Link to={"/category/" + cat.id}>
                       <img
                         className="categoryImage"
-                        src={"http://localhost:4000/images/" + cat.url}
+                        src={reactapp+ "/images/" + cat.url}
                       ></img>
                       <h4 className="categoryTitle">{cat.name}</h4>
                     </Link>
@@ -96,7 +93,7 @@ export default function Home() {
                     {" "}
                     <img
                       className="productImage"
-                      src={"http://localhost:4000/images/" + product.url}
+                      src={reactapp+ "/images/" + product.url}
                     ></img>
                     <h4 className="productTitle">{product.name}</h4>
                   </Link>
@@ -114,7 +111,7 @@ export default function Home() {
                   {" "}
                   <img
                     className="productImage"
-                    src={"http://localhost:4000/images/" + product.url}
+                    src={reactapp+"/images/" + product.url}
                   ></img>
                   <h4 className="productTitle">{product.name}</h4>
                 </Link>
