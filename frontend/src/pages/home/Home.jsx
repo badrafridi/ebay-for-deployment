@@ -83,7 +83,7 @@ export default function Home() {
 
         <h2 className="heading">Recently Uploaded Products</h2>
         <div className="homeProductsBlock">
-          {allproducts
+          {allproducts && allproducts
             .slice(-5)
             .reverse()
             .map((product) => {
@@ -104,7 +104,7 @@ export default function Home() {
 
         <h2 className="heading">All Products</h2>
         <div className="homeProductsBlock">
-          {allproducts.slice(0, 10).map((product) => {
+          {allproducts && allproducts.slice(0, 10).map((product) => {
             return (
               <div className="homeProductsSingle" key={product.id}>
                 <Link to={"/product/" + product.id}>
