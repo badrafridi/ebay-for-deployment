@@ -32,6 +32,7 @@ function App() {
   const [usertop, setUsertop] = useState(null);
   const [cart, setCart] = useState([]);
   const [isadmin, setIsadmin] = useState();
+  const api = process.env.REACT_APP_API;
 
   const providerValue = useMemo(
     () => ({ usertop, setUsertop }),
@@ -44,10 +45,27 @@ function App() {
 
   // getting user data like name etc
   const getUser = () => {
-    if (localStorage.user) {
-      var userobj = JSON.parse(localStorage.user);
-      setUsertop(userobj);
-    }
+    fetch(api + "/user", {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Credentials": true,
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.user) {
+          setUsertop(res.user[0]);
+        } else {
+          console.log("user not found");
+        }
+      })
+
+      .catch((err) => {
+        console.log(err);
+      });
   };
   useEffect(() => {
     getUser();
@@ -70,18 +88,30 @@ function App() {
           {<Topbar usertop={usertop} />}
           <Routes>
             {/* -------- admin routes ---------- */}
-            <Route path="/" exact element={<Home />} title="Home"/>
+            <Route path="/" exact element={<Home />} title="Home" />
             <Route
               path="/login"
               element={usertop ? <Navigate to="/" /> : <Login />}
               title="Login"
             />
 
-            <Route path="/products" element={<Products />} title="Products"/>
-            <Route path="/product/:productId" element={<Single_product /> } title="Product"/>
+            <Route path="/products" element={<Products />} title="Products" />
+            <Route
+              path="/product/:productId"
+              element={<Single_product />}
+              title="Product"
+            />
 
-            <Route path="/categories" element={<Categories />} title="Categories"/>
-            <Route path="/category/:categoryId" element={<Single_category /> } title="Category"/>
+            <Route
+              path="/categories"
+              element={<Categories />}
+              title="Categories"
+            />
+            <Route
+              path="/category/:categoryId"
+              element={<Single_category />}
+              title="Category"
+            />
 
             <Route
               path="/cart"
@@ -100,9 +130,17 @@ function App() {
               title="New Product"
             />
 
-            <Route path="/order/:orderId" element={<Single_order />} title="Order"/>
+            <Route
+              path="/order/:orderId"
+              element={<Single_order />}
+              title="Order"
+            />
 
-            <Route path="/auction/:auctionId" element={<Single_auction /> } title="Auction" />
+            <Route
+              path="/auction/:auctionId"
+              element={<Single_auction />}
+              title="Auction"
+            />
 
             {/* ---------------admin routes----------------- */}
             <Route
@@ -113,9 +151,9 @@ function App() {
               path="admin/all-auctions"
               element={isadmin ? <All_auctions /> : <Navigate to="/login" />}
             />
-                        <Route
+            <Route
               path="admin/all-products"
-              element={isadmin ? <All_products/> : <Navigate to="/login" />}
+              element={isadmin ? <All_products /> : <Navigate to="/login" />}
             />
             <Route
               path="admin/categories"
@@ -125,7 +163,7 @@ function App() {
             />
           </Routes>
 
-          {usertop ? <Footer /> : <></>}
+          <Footer />
         </Router>
       </CartContext.Provider>
     </UserContext.Provider>

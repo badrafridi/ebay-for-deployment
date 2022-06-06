@@ -7,7 +7,11 @@ div.loginForm {
     flex-direction: column;
 }
 div.loginForm > form {
-    width:300px;
+    width: 425px;
+    padding: 75px;
+    background-color: #fbfbfb;
+    box-shadow: 0px 0px 7px 2px #00000017;
+    border-radius: 10px;
 }
 
 #welcome {

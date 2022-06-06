@@ -37,8 +37,6 @@ export default function Login() {
         setError("");
         console.log(res.data);
         setUsertop(res.data.user);
-        localStorage.setItem("user", JSON.stringify(res.data.user));
-        //
       })
       .catch((error) => {
         if (error.response) {

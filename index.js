@@ -56,10 +56,7 @@ app.use(cookieParser("secretCode"));
 app.use(passport.initialize());
 app.use(passport.session());
 
-
 app.use(express.static(path.join(__dirname, "/frontend/build")));
-
-
 
 app.listen(process.env.PORT || 4000, () => {
   console.log(process.env.PORT);
@@ -1139,6 +1136,6 @@ app.post("/api/addnewcategory", (req, res) => {
 });
 
 //for front end
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/frontend/build', 'index.html'));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "/frontend/build", "index.html"));
 });

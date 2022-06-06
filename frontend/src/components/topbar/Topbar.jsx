@@ -15,7 +15,22 @@ export default function Topbar() {
   const [isadmin, setIsadmin] = useState();
 
   const { cart, setCart } = useContext(CartContext);
+  const [categories, setCategories] = useState([]);
   const navigate = useNavigate();
+
+  const getcategories = () => {
+    axios({
+      method: "GET",
+      withCredentials: true,
+      url: `${api + "/getallcategories"}`,
+    })
+      .then((res) => {
+        setCategories(res.data.row);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   const logout = () => {
     axios({
       method: "POST",
@@ -36,6 +51,7 @@ export default function Topbar() {
   };
 
   useEffect(() => {
+    getcategories();
     if (usertop) {
       if (usertop.status == 1) {
         setIsadmin(true);
@@ -152,24 +168,16 @@ export default function Topbar() {
         </div>
         <div id="topCategoriesBlock">
           <ul id="topCategoriesUl">
-            <li>
-              <a href="#">Phones</a>
-            </li>
-            <li>
-              <a href="#">Houses</a>
-            </li>
-            <li>
-              <a href="#">Watches</a>
-            </li>
-            <li>
-              <a href="#">Glasses</a>
-            </li>
-            <li>
-              <a href="#">Games</a>
-            </li>
-            <li>
-              <a href="#">Hardware</a>
-            </li>
+            {categories &&
+              categories.slice(0, 6).map((cat) => {
+                return (
+                  <>
+                    <li>
+                      <a href={"/category/" + cat.id}>{cat.name}</a>
+                    </li>
+                  </>
+                );
+              })}
           </ul>
         </div>
       </>
