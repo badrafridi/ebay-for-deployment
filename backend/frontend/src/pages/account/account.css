@@ -1,0 +1,120 @@
+.feeBlocks {
+    
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 15px;
+    border-radius: 5px;
+    box-shadow: 0px 0 4px 2px #8080802e;
+    margin-top: 20px;
+    font-size: 23px;
+    flex-wrap: wrap;
+}
+
+.red {
+    color:red
+}
+.green {
+    color:green;
+}
+
+.accountProductImage {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+}
+
+.fifty {
+    flex:0 0 50%;
+    display: flex;
+}
+
+.fifty > h4 {
+    margin-left: 30px;
+}
+
+.fa-trash {
+    color:red;
+}
+
+.icons > i {
+    margin-left:20px
+}
+
+.buyingOrders > .first {
+    flex: 0 0 40%;
+}
+.buyingOrders > .second {
+    flex: 0 0 10%;
+}
+.buyingOrders > .third {
+    flex: 0 0 30%;
+}
+.buyingOrders > .fourth {
+    flex: 0 0 20%;
+}
+
+.buyingAuctionOrders > .first {
+    flex: 0 0 40%;
+}
+.buyingAuctionOrders > .second {
+    flex: 0 0 10%;
+}
+.buyingAuctionOrders > .third {
+    flex: 0 0 20%;
+}
+.buyingAuctionOrders > .fourth {
+    flex: 0 0 20%;
+}
+.buyingAuctionOrders > .fifth {
+    flex: 0 0 10%;
+}
+
+a.sellingOrders, a.buyingAuctionOrders, a.buyingOrders , a.sellingbuyingorders {
+    text-decoration: none;
+    color:#212529;
+}
+
+a.sellingOrders:hover, a.buyingAuctionOrders:hover, a.buyingOrders:hover, a.sellingbuyingorders:hover {
+        background-color: #e7e5e5;
+        box-shadow: inset 0px 0px 5px 0px #a5a5a5;
+}
+
+.sellingbuyingorders > .first {
+    flex: 0 0 40%;
+}
+.sellingbuyingorders > .second {
+    flex: 0 0 10%;
+}
+.sellingbuyingorders > .third {
+    flex: 0 0 10%;
+}
+.sellingbuyingorders > .fourth {
+    flex: 0 0 16%;
+}
+
+.tableHead {
+    background-color: black;
+    border: 2px solid black;
+    color: white;
+}
+
+.myProducts > .first {
+    flex: 0 0 40%;
+}
+.myProducts > .second {
+    flex: 0 0 10%;
+}
+.myProducts > .third {
+    flex: 0 0 15%;
+}
+.myProducts > .fourth {
+    flex: 0 0 10%;
+}
+
+.myProducts > .fifth {
+    flex: 0 0 10%;
+}
+
+.myProducts > .sixth {
+    flex: 0 0 15%;
+}

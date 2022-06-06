@@ -1,0 +1,19 @@
+div.loginForm {
+    width:100%;
+    display:flex;
+    justify-content: center;
+    height:99vh;
+    align-items: center;
+    flex-direction: column;
+}
+div.loginForm > form {
+    width:300px;
+}
+
+#welcome {
+    background-color: grey;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}

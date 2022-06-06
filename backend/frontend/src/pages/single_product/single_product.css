@@ -1,0 +1,26 @@
+.flexRow{
+    display: flex;
+    align-items: center;
+
+} 
+.twoColumns {
+    justify-content: space-between;
+}
+
+.flexColumn.full {
+    flex:1 1 50%;
+}
+
+.productPageProductImageBlock {
+    padding:40px;
+}
+
+.productPageProductDetailsBlock {
+    padding:40px;
+}
+
+.flexColumn.full.productPageProductImageBlock > img {
+    height: 400px;
+    object-fit: cover;
+    width: 100%;
+} 
