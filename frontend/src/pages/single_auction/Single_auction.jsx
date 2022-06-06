@@ -9,9 +9,6 @@ import { CartContext } from "../../cartContext";
 
 export default function Single_auction() {
   const api = process.env.REACT_APP_API;
-  const reactapp = process.env.REACT_APP;
-
-
   const { usertop, setUsertop } = useContext(UserContext);
   const location = useLocation();
   const id = location.pathname.split("/")[2];

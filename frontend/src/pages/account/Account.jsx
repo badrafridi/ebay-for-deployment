@@ -6,9 +6,6 @@ import "./account.css";
 
 export default function Account() {
   const api = process.env.REACT_APP_API;
-  const reactapp = process.env.REACT_APP;
-
-
   const [userproducts, setUserproducts] = useState([]);
   const [buyingorders, setBuyingorders] = useState([]);
   const [buyingauctionorders, setBuyingauctionorders] = useState([]);
@@ -182,7 +179,7 @@ export default function Account() {
                     <div className="first fifty">
                       <img
                         className="accountProductImage"
-                        src={reactapp+"/images/" + x.url}
+                        src={"/images/" + x.url}
                       ></img>
                       <h4>{x.name}</h4>
                     </div>
@@ -224,7 +221,7 @@ export default function Account() {
                     <div className="first fifty">
                       <img
                         className="accountProductImage"
-                        src={reactapp+"/images/" + x.url}
+                        src={"/images/" + x.url}
                       ></img>
                       <h4>{x.product_name}</h4>
                     </div>
@@ -270,7 +267,7 @@ export default function Account() {
                       <div className="first fifty">
                         <img
                           className="accountProductImage"
-                          src={reactapp+"/images/" + product.url}
+                          src={"/images/" + product.url}
                         ></img>
                         <h4>{product.name}</h4>
                       </div>
@@ -314,7 +311,7 @@ export default function Account() {
                       <div className="first fifty">
                         <img
                           className="accountProductImage"
-                          src={reactapp+"/images/" + order.url}
+                          src={"/images/" + order.url}
                         ></img>
                         <h4>{order.name}</h4>
                       </div>
@@ -361,7 +358,7 @@ export default function Account() {
                       <div className="first fifty">
                         <img
                           className="accountProductImage"
-                          src={reactapp+"/images/" + order.url}
+                          src={"/images/" + order.url}
                         ></img>
                         <h4>{order.product_name}</h4>
                       </div>

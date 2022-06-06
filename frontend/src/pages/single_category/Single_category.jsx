@@ -5,9 +5,6 @@ import axios from "axios";
 
 export default function Single_category() {
   const api = process.env.REACT_APP_API;
-  const reactapp = process.env.REACT_APP;
-
-
   const location = useLocation();
   const path = location.pathname.split("/")[2];
   const [products, setProducts] = useState([]);
@@ -43,7 +40,7 @@ export default function Single_category() {
                       {" "}
                       <img
                         className="productImage"
-                        src={reactapp+"/images/" + product.url}
+                        src={"/images/" + product.url}
                       ></img>
                       <h4 className="productTitle">{product.name}</h4>
                     </Link>
