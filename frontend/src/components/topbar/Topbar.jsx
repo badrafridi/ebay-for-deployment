@@ -4,7 +4,6 @@ import axios from "axios";
 import { useState, useEffect, useContext } from "react";
 import { UserContext } from "../../userContext";
 import { CartContext } from "../../cartContext";
-import { Link } from "react-router-dom";
 
 import { useNavigate } from "react-router-dom";
 import logo from "../../images/logo.png";
@@ -163,8 +162,9 @@ export default function Topbar() {
                 <Link to="/login">login</Link>
               </li>
             )}
-
-            <i className="fa-solid fa-magnifying-glass topIconRight"></i>
+            <Link to="/products">
+              <i className="fa-solid fa-magnifying-glass topIconRight"></i>
+            </Link>
           </div>
         </div>
         <div id="topCategoriesBlock">
