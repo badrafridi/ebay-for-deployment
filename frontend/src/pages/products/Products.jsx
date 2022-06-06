@@ -4,6 +4,8 @@ import axios from "axios";
 
 export default function Products() {
   const api = process.env.REACT_APP_API;
+  const [search, setSearch] = useState("");
+
   const [allproducts, setAllproducts] = useState([]);
 
   const allProducts = () => {
@@ -26,21 +28,50 @@ export default function Products() {
     <>
       <div className="page">
         <h1 className="heading">Products</h1>
+        <div class="input-group rounded" style={{ marginBottom: "20px" }}>
+          <input
+            type="search"
+            class="form-control rounded"
+            placeholder="Search"
+            aria-label="Search"
+            aria-describedby="search-addon"
+            onChange={(e) => {
+              setSearch(e.target.value);
+            }}
+          />
+          <span class="input-group-text border-0" id="search-addon">
+            <i class="fas fa-search"></i>
+          </span>
+        </div>
         <div className="homeProductsBlock">
-          {allproducts.map((product) => {
-            return (
-              <div className="homeProductsSingle" key={product.id}>
-                <Link to={"/product/" + product.id}>
-                  {" "}
-                  <img
-                    className="productImage"
-                    src={"/images/" + product.url}
-                  ></img>
-                  <h4 className="productTitle">{product.name}</h4>
-                </Link>
-              </div>
-            );
-          })}
+          {allproducts &&
+            allproducts
+              .filter((value) => {
+                console.log(value.name.toLowerCase());
+                if (search == "") {
+                  return value;
+                } else if (
+                  value.name.toLowerCase().includes(search.toLowerCase())
+                ) {
+                  return value;
+                }
+                console.log(value.name);
+                // return value;
+              })
+              .map((product) => {
+                return (
+                  <div className="homeProductsSingle" key={product.id}>
+                    <Link to={"/product/" + product.id}>
+                      {" "}
+                      <img
+                        className="productImage"
+                        src={"/images/" + product.url}
+                      ></img>
+                      <h4 className="productTitle">{product.name}</h4>
+                    </Link>
+                  </div>
+                );
+              })}
         </div>
       </div>
     </>
