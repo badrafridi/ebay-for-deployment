@@ -77,29 +77,32 @@ function App() {
               title="Login"
             />
 
-            <Route path="/products" element={<Products />} />
-            <Route path="/product/:productId" element={<Single_product />} />
+            <Route path="/products" element={<Products />} title="Products"/>
+            <Route path="/product/:productId" element={<Single_product /> } title="Product"/>
 
-            <Route path="/categories" element={<Categories />} />
-            <Route path="/category/:categoryId" element={<Single_category />} />
+            <Route path="/categories" element={<Categories />} title="Categories"/>
+            <Route path="/category/:categoryId" element={<Single_category /> } title="Category"/>
 
             <Route
               path="/cart"
               element={usertop ? <Cart /> : <Navigate to="/login" />}
+              title="Cart"
             />
             <Route
               path="/account"
               element={usertop ? <Account /> : <Navigate to="/login" />}
+              title="Account"
             />
 
             <Route
               path="/add-new-product"
               element={usertop ? <New_product /> : <Navigate to="/login" />}
+              title="New Product"
             />
 
-            <Route path="/order/:orderId" element={<Single_order />} />
+            <Route path="/order/:orderId" element={<Single_order />} title="Order"/>
 
-            <Route path="/auction/:auctionId" element={<Single_auction />} />
+            <Route path="/auction/:auctionId" element={<Single_auction /> } title="Auction" />
 
             {/* ---------------admin routes----------------- */}
             <Route
