@@ -31,6 +31,7 @@ export default function Home() {
       url: `${api + "/allproducts"}`,
     })
       .then((res) => {
+        console.log({allProducts})
         setAllproducts(res.data.row);
       })
       .catch((error) => {
