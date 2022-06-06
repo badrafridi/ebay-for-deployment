@@ -59,9 +59,7 @@ app.use(passport.session());
 
 app.use(express.static(path.join(__dirname, "/frontend/build")));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/frontend/build', 'index.html'));
-});
+
 
 app.listen(process.env.PORT || 4000, () => {
   console.log(process.env.PORT);
@@ -1138,4 +1136,9 @@ app.post("/api/addnewcategory", (req, res) => {
       res.send({ message: "category successfully added", row });
     }
   });
+});
+
+//for front end
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '/frontend/build', 'index.html'));
 });
