@@ -31,6 +31,8 @@ export default function Home() {
       url: `${api + "/allproducts"}`,
     })
       .then((res) => {
+        console.log('this is the response');
+        console.log(allproducts)
         console.log({allProducts})
         setAllproducts(res.data.row);
       })

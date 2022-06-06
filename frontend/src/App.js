@@ -70,10 +70,11 @@ function App() {
           {<Topbar usertop={usertop} />}
           <Routes>
             {/* -------- admin routes ---------- */}
-            <Route path="/" exact element={<Home />} />
+            <Route path="/" exact element={<Home />} title="Home"/>
             <Route
               path="/login"
               element={usertop ? <Navigate to="/" /> : <Login />}
+              title="Login"
             />
 
             <Route path="/products" element={<Products />} />
