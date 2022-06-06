@@ -32,6 +32,7 @@ export default function Home() {
     })
       .then((res) => {
         console.log('this is the response');
+        console.log(res)
         console.log(allproducts)
         console.log({allProducts})
         setAllproducts(res.data.row);
