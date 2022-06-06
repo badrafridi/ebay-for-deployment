@@ -2,12 +2,15 @@ const passport = require("passport");
 const localStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcrypt");
 const mysql = require("mysql");
-const db = mysql.createPool({
-  host: "217.21.77.51",
-  user: "u154258573_badrafridi",
-  password: "Qwerty123..",
-  database: "u154258573_ebay_database",
-});
+const db = mysql.createPool(
+  {
+    host: process.env.HOST,
+    user: process.env.USER,
+    password: process.env.PASSWORD,
+    database: process.env.DATABASE,
+  },
+  { multipleStatements: true }
+);
 
 function initialize(passport) {
   const authenticateUser = (req, login_username, login_password, cb) => {
