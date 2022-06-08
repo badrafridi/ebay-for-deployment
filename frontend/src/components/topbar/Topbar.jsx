@@ -256,7 +256,7 @@ export default function Topbar() {
             <ul class="nav-list-mob">
               {usertop && (
                 <>
-                  <p>Welcome {usertop.username}</p>
+                  <li>Welcome {usertop.username}</li>
                 </>
               )}
               <li>
