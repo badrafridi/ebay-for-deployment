@@ -45,17 +45,17 @@ export default function Home() {
   }, []);
   return (
     <>
-      <div>
-        <Carousel>
-          <div>
-            <img src={require("../../images/iphone.jpg")} />
-          </div>
-          <div>
-            <img src={require("../../images/iphone2.jpg")} />
-          </div>
-        </Carousel>
-      </div>
       <div className="page">
+        <div>
+          <Carousel>
+            <div>
+              <img src={require("../../images/iphone.jpg")} />
+            </div>
+            <div>
+              <img src={require("../../images/iphone2.jpg")} />
+            </div>
+          </Carousel>
+        </div>
         <h2 className="heading">Explore Popular Categories</h2>
         <div className="homeCategoriesBlock">
           {categories &&
@@ -66,7 +66,7 @@ export default function Home() {
                     <Link to={"/category/" + cat.id}>
                       <img
                         className="categoryImage"
-                        src={ "/images/" + cat.url}
+                        src={"/images/" + cat.url}
                       ></img>
                       <h4 className="categoryTitle">{cat.name}</h4>
                     </Link>
@@ -83,41 +83,43 @@ export default function Home() {
 
         <h2 className="heading">Recently Uploaded Products</h2>
         <div className="homeProductsBlock">
-          {allproducts && allproducts
-            .slice(-5)
-            .reverse()
-            .map((product) => {
+          {allproducts &&
+            allproducts
+              .slice(-5)
+              .reverse()
+              .map((product) => {
+                return (
+                  <div className="homeProductsSingle" key={product.id}>
+                    <Link to={"/product/" + product.id}>
+                      {" "}
+                      <img
+                        className="productImage"
+                        src={"/images/" + product.url}
+                      ></img>
+                      <h4 className="productTitle">{product.name}</h4>
+                    </Link>
+                  </div>
+                );
+              })}
+        </div>
+
+        <h2 className="heading">All Products</h2>
+        <div className="homeProductsBlock">
+          {allproducts &&
+            allproducts.slice(0, 10).map((product) => {
               return (
                 <div className="homeProductsSingle" key={product.id}>
                   <Link to={"/product/" + product.id}>
                     {" "}
                     <img
                       className="productImage"
-                      src={ "/images/" + product.url}
+                      src={"/images/" + product.url}
                     ></img>
                     <h4 className="productTitle">{product.name}</h4>
                   </Link>
                 </div>
               );
             })}
-        </div>
-
-        <h2 className="heading">All Products</h2>
-        <div className="homeProductsBlock">
-          {allproducts && allproducts.slice(0, 10).map((product) => {
-            return (
-              <div className="homeProductsSingle" key={product.id}>
-                <Link to={"/product/" + product.id}>
-                  {" "}
-                  <img
-                    className="productImage"
-                    src={"/images/" + product.url}
-                  ></img>
-                  <h4 className="productTitle">{product.name}</h4>
-                </Link>
-              </div>
-            );
-          })}
         </div>
         <div>
           <h4 className="seeAll">

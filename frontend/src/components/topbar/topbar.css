@@ -86,6 +86,9 @@
     #mobileHeader {
       display:none;
     }
+    #desktopHeader {
+      display:block;
+    }
   }
 
 
@@ -94,6 +97,15 @@
   @media screen and (max-width:600px){
     #desktopHeader{
       display:none;
+    }
+    #mobileHeader {
+      display:block;
+    }
+    #topCategoriesBlock {
+      display:none;
+    }
+    .page {
+
     }
 
     .myIcon {
@@ -108,8 +120,10 @@
         justify-content: space-between;
       align-items: center;
       position:fixed;
+      top:0;
       width:100%;
       flex-wrap:wrap;
+      z-index: 999999;
     }
     
     .log-container-mob {

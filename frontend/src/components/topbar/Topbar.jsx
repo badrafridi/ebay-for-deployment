@@ -119,7 +119,7 @@ export default function Topbar() {
               <i class="fa-solid fa-magnifying-glass myIcon"></i>
             </div>
             <input type="checkbox" id="check-mob" />
-            <label for="check" class="hamburger-btn-mob">
+            <label for="check-mob" class="hamburger-btn-mob">
               <i class="fas fa-bars myIcon"></i>
             </label>
             <ul class="nav-list-mob">
@@ -242,7 +242,7 @@ export default function Topbar() {
               <i class="fa-solid fa-magnifying-glass myIcon"></i>
             </div>
             <input type="checkbox" id="check-mob" />
-            <label for="check" class="hamburger-btn-mob">
+            <label for="check-mob" class="hamburger-btn-mob">
               <i class="fas fa-bars myIcon"></i>
             </label>
             <ul class="nav-list-mob">
