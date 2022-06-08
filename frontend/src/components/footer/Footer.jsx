@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import "./footer.css";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 export default function Footer() {
   const api = process.env.REACT_APP_API;
