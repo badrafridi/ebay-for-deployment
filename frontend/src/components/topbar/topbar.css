@@ -87,7 +87,7 @@
       display:none;
     }
     #desktopHeader {
-      display:block;
+      display:flex;
     }
   }
 
@@ -132,7 +132,7 @@
     
     }
     
-    .logo-mob {
+    .logo-mob > img{
         margin-left: 20px;
         margin-top: 12px;
         height: 4rem;
@@ -195,11 +195,11 @@
         display: none;
     }
     
-    #check-mob:checked ~.nav-list {
+    #check-mob:checked ~.nav-list-mob {
         height: 100vh;
     }
     
-    #check-mob:checked~.nav-list li {
+    #check-mob:checked~.nav-list-mob li {
         opacity: 1;
       visibility:inherit;
     }

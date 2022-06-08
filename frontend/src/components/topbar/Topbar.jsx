@@ -113,10 +113,14 @@ export default function Topbar() {
         <header id="mobileHeader">
           <nav>
             <div class="log-container-mob">
-              <img class="logo-mob" src={logo} />
+              <Link to="/" class="logo-mob">
+                <img width={150} src={logo} />
+              </Link>
             </div>
             <div>
-              <i class="fa-solid fa-magnifying-glass myIcon"></i>
+              <Link to="/products">
+                <i class="fa-solid fa-magnifying-glass myIcon"></i>
+              </Link>
             </div>
             <input type="checkbox" id="check-mob" />
             <label for="check-mob" class="hamburger-btn-mob">
@@ -236,10 +240,14 @@ export default function Topbar() {
         <header id="mobileHeader">
           <nav>
             <div class="log-container-mob">
-              <img class="logo-mob" src={logo} />
+              <Link to="/" class="logo-mob">
+                <img width={150} src={logo} />
+              </Link>
             </div>
             <div>
-              <i class="fa-solid fa-magnifying-glass myIcon"></i>
+              <Link to="/products">
+                <i class="fa-solid fa-magnifying-glass myIcon"></i>
+              </Link>
             </div>
             <input type="checkbox" id="check-mob" />
             <label for="check-mob" class="hamburger-btn-mob">
