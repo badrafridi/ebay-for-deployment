@@ -65,7 +65,7 @@ export default function Topbar() {
         {" "}
         {isadmin && (
           <>
-            <div className="topbar">
+            <div className="topbar" id="desktopHeader">
               <div className="topLeft">
                 <Link to="/">
                   <img width={150} src={logo} />
@@ -90,7 +90,7 @@ export default function Topbar() {
               <div className="topRight">
                 {usertop ? (
                   <>
-                    <p>welcome {usertop.username}</p>
+                    <p>Welcome {usertop.username}</p>
                     <li
                       className="topListItem"
                       onClick={() => {
@@ -109,12 +109,62 @@ export default function Topbar() {
             </div>
           </>
         )}
+        {/* ------------------------------mobile header------------------------------ */}
+        <header id="mobileHeader">
+          <nav>
+            <div class="log-container-mob">
+              <img class="logo-mob" src={logo} />
+            </div>
+            <div>
+              <i class="fa-solid fa-magnifying-glass myIcon"></i>
+            </div>
+            <input type="checkbox" id="check-mob" />
+            <label for="check" class="hamburger-btn-mob">
+              <i class="fas fa-bars myIcon" style="color:#3484FB"></i>
+            </label>
+            <ul class="nav-list-mob">
+              {usertop && (
+                <>
+                  <li>Welcome {usertop.username}</li>
+                </>
+              )}
+              <li>
+                <Link to="/admin/all-orders">direct orders</Link>
+              </li>
+              <li>
+                <Link to="/admin/all-auctions">auction orders</Link>
+              </li>
+              <li>
+                <Link to="/admin/all-products">all products</Link>
+              </li>
+              <li>
+                <Link to="/admin/categories">categories</Link>
+              </li>
+              {usertop ? (
+                <>
+                  <li
+                    className="topListItem"
+                    onClick={() => {
+                      logout();
+                    }}
+                  >
+                    logout
+                  </li>
+                </>
+              ) : (
+                <li className="topListItem">
+                  <Link to="/login">login</Link>
+                </li>
+              )}
+            </ul>
+          </nav>
+        </header>
       </>
     );
   } else {
     return (
       <>
-        <div className="topbar">
+        <div className="topbar" id="desktopHeader">
           <div className="topLeft">
             <Link to="/">
               <img width={150} src={logo} />
@@ -147,7 +197,7 @@ export default function Topbar() {
           <div className="topRight">
             {usertop ? (
               <>
-                <p>welcome {usertop.username}</p>
+                <p>Welcome {usertop.username}</p>
                 <li
                   className="topListItem"
                   onClick={() => {
@@ -181,6 +231,61 @@ export default function Topbar() {
               })}
           </ul>
         </div>
+
+        {/* ------------------------------mobile header------------------------------ */}
+        <header id="mobileHeader">
+          <nav>
+            <div class="log-container-mob">
+              <img class="logo-mob" src={logo} />
+            </div>
+            <div>
+              <i class="fa-solid fa-magnifying-glass myIcon"></i>
+            </div>
+            <input type="checkbox" id="check-mob" />
+            <label for="check" class="hamburger-btn-mob">
+              <i class="fas fa-bars myIcon" style="color:#3484FB"></i>
+            </label>
+            <ul class="nav-list-mob">
+              {usertop && (
+                <>
+                  <p>Welcome {usertop.username}</p>
+                </>
+              )}
+              <li>
+                <Link to="/products">products</Link>
+              </li>
+              <li>
+                <Link to="/categories">categories</Link>
+              </li>
+              {usertop && (
+                <>
+                  <li>
+                    <Link to="/cart">cart</Link>
+                  </li>
+                  <li>
+                    <Link to="/account">account</Link>
+                  </li>
+                </>
+              )}
+              {usertop ? (
+                <>
+                  <li
+                    className="topListItem"
+                    onClick={() => {
+                      logout();
+                    }}
+                  >
+                    logout
+                  </li>
+                </>
+              ) : (
+                <li className="topListItem">
+                  <Link to="/login">login</Link>
+                </li>
+              )}
+            </ul>
+          </nav>
+        </header>
       </>
     );
   }
