@@ -98,3 +98,43 @@ p, a , li , h1, h2, h3, h4, h5, h6 {
   .fa-trash:hover{
     transform: rotateZ(45deg);
   }
+
+
+
+
+  /* ---------------mobile styling--------------- */
+  @media screen and (max-width:600px){
+    .carousel-root, .carousel.carousel-slider {
+        height: 215px;
+    }
+    .categoryImage {
+        height: 149px;
+        width: 145px;
+    }
+
+    .productTitle {
+        margin-top: 10px;
+        width: 163px;
+    }
+
+    .productImage {
+        height: 158px;
+       width:158px;
+}
+
+/* for PRODUCT PAGE  */
+
+.twoColumns {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* for CATAGORY PAGE */
+
+.categoryImage {
+    height: 158px;
+    width: 158px;
+
+}
+  }
