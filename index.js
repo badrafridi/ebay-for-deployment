@@ -751,7 +751,7 @@ app.post("/api/markauctionascompleted", (req, res) => {
 app.get("/api/getproductsforcart/:id", (req, res) => {
   const id = req.params["id"];
   const sqlcheck =
-    "SELECT orders.user_id as buyer_id, orders.buyer_name, orders.buyer_phone, orders.buyer_address, orders.status, orders.date, orders.rated_by_seller, orders.rated_by_buyer , products.name as product_name, products.price as product_price, products.user_id as seller_id, users.username as seller_name FROM orders, products, users WHERE orders.id = 44 AND orders.product_id = products.id AND users.id = products.user_id";
+    "SELECT orders.user_id as buyer_id, orders.buyer_name, orders.buyer_phone, orders.buyer_address, orders.status, orders.date, orders.rated_by_seller, orders.rated_by_buyer , products.name as product_name, products.price as product_price, products.user_id as seller_id, users.username as seller_name FROM orders, products, users WHERE orders.id = ? AND orders.product_id = products.id AND users.id = products.user_id";
   db.query(sqlcheck, id, (err, row) => {
     if (err) {
       console.log(err);
