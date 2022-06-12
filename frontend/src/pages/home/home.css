@@ -148,7 +148,16 @@ p, a , li , h1, h2, h3, h4, h5, h6 {
     /* THis for is for footer */
     .footer {
       padding: 25px;
+      height:auto;
+      padding:25px;
+      justify-content: space-between;
     }
+
+    .footer > div {
+        margin-top:20px;
+        flex: 0 1 40%;
+    }
+
     .footer .ulNoStyle {
       display: flex;
       flex-direction: column;
