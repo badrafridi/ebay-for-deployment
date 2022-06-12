@@ -107,10 +107,6 @@ p, a , li , h1, h2, h3, h4, h5, h6 {
     .carousel-root, .carousel.carousel-slider {
         height: 215px;
     }
-    .categoryImage {
-        height: 149px;
-        width: 145px;
-    }
 
     .productTitle {
         margin-top: 10px;
@@ -128,13 +124,49 @@ p, a , li , h1, h2, h3, h4, h5, h6 {
     display: flex;
     flex-direction: column;
 }
-
-
-/* for CATAGORY PAGE */
-
-.categoryImage {
-    height: 158px;
-    width: 158px;
-
-}
   }
+
+
+  @media only screen and (min-width: 321px) and (max-width: 600px) {
+    /* ADMIN */
+    /* category page */
+  
+    /* This code is for form  */
+  
+    .createCategoryBlock > form > input {
+      margin-bottom: 15px;
+    }
+    /* Code Ended */
+  
+    /* This code is for category images */
+    .homeCategoriesSingle > a > img.categoryImage {
+      height: 145px;
+      width: 145px;
+    }
+    /* Code Ended */
+  
+    /* THis for is for footer */
+    .footer {
+      padding: 25px;
+    }
+    .footer .ulNoStyle {
+      display: flex;
+      flex-direction: column;
+    }
+    .footer .h3 {
+      margin-top: 10px;
+    }
+    /* Code Ended */
+  
+    /* USER */
+    /* Home page */
+    /* Recently Uploaded Products */
+    .homeProductsBlock {
+      gap: 1px;
+    }
+    /* Categories Page */
+    .homeCategoriesBlock {
+      gap: 11px;
+    }
+  }
+  

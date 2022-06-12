@@ -68,7 +68,9 @@ export default function Footer() {
             categories.slice(0, 6).map((cat) => {
               return (
                 <>
-                  <Link to={"/category/" + cat.id}>{cat.name}</Link>
+                  <li>
+                    <Link to={"/category/" + cat.id}>{cat.name}</Link>
+                  </li>
                 </>
               );
             })}
