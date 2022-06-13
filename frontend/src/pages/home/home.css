@@ -49,6 +49,11 @@ div.carousel-root > div:nth-child(2) {
 .productTitle {
     margin-top:10px;
     width:300px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 50px;
 }
 
 .homeProductsSingle > a {
