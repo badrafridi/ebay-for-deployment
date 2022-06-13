@@ -153,23 +153,23 @@ p, a , li , h1, h2, h3, h4, h5, h6 {
   
     /* THis for is for footer */
     .footer {
-      padding: 25px;
-      height:auto;
-      padding:25px;
-      justify-content: space-between;
+      padding: 25px !important;
+      height:auto !important;
+      padding:25px !important;
+      justify-content: space-between !important;
     }
 
     .footer > div {
-        margin-top:20px;
-        flex: 0 1 40%;
+        margin-top:20px !important;
+        flex: 0 1 40% !important;
     }
 
     .footer .ulNoStyle {
-      display: flex;
-      flex-direction: column;
+      display: flex !important;
+      flex-direction: column !important;
     }
     .footer .h3 {
-      margin-top: 10px;
+      margin-top: 10px !important;
     }
     /* Code Ended */
   
