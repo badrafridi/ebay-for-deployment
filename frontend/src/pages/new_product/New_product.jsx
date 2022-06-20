@@ -226,7 +226,6 @@ export default function New_product() {
           <div className="formItem">
             <label>Product image</label>
             <input
-              required
               type="file"
               accept=".png,.jpg,.jpeg,.jfif,.webp"
               value={fileInputState}
@@ -238,6 +237,7 @@ export default function New_product() {
           <div className="formItem">
             <label>Category</label>
             <select name="category" className="select" ref={category} required>
+              <option value="">Category</option>
               {categories &&
                 categories.map((cat) => {
                   return (
