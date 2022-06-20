@@ -233,6 +233,9 @@ export default function New_product() {
                 handleFileInputChange(e);
               }}
             ></input>
+            {previewSource && (
+              <img src={previewSource} style={{ height: "50px" }} />
+            )}
           </div>
           <div className="formItem">
             <label>Category</label>
