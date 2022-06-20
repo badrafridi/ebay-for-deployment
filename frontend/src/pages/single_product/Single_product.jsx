@@ -10,7 +10,6 @@ import swal from "sweetalert";
 export default function Single_product() {
   const api = process.env.REACT_APP_API;
 
-
   const { usertop, setUsertop } = useContext(UserContext);
   const { cart, setCart } = useContext(CartContext);
   const [product, setProduct] = useState([]);
@@ -173,11 +172,7 @@ export default function Single_product() {
       <div className="page">
         <div className="flexRow twoColumns">
           <div className="flexColumn full productPageProductImageBlock">
-            <img
-              src={
-                product.url ? "/images/" + product.url : ""
-              }
-            ></img>
+            <img src={product.url ? product.url : ""}></img>
           </div>
           <div className="flexColumn full productPageProductDetailsBlock">
             <p style={{ fontSize: "14px" }}>

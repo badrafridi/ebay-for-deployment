@@ -35,10 +35,7 @@ export default function Categories() {
                 <>
                   <div className="homeCategoriesSingle">
                     <Link to={"/category/" + cat.id}>
-                      <img
-                        className="categoryImage"
-                        src={"/images/" + cat.url}
-                      ></img>
+                      <img className="categoryImage" src={cat.url}></img>
                       <h4 className="categoryTitle">{cat.name}</h4>
                     </Link>
                   </div>

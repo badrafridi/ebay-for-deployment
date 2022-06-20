@@ -63,10 +63,7 @@ export default function Products() {
                   <div className="homeProductsSingle" key={product.id}>
                     <Link to={"/product/" + product.id}>
                       {" "}
-                      <img
-                        className="productImage"
-                        src={"/images/" + product.url}
-                      ></img>
+                      <img className="productImage" src={product.url}></img>
                       <h4 className="productTitle">{product.name}</h4>
                     </Link>
                   </div>

@@ -6,6 +6,9 @@ import swal from "sweetalert";
 
 export default function Categories() {
   const api = process.env.REACT_APP_API;
+  const [previewSource, setPreviewSource] = useState("");
+  const [fileInputState, setFileInputState] = useState("");
+  const [selectedFile, setSelectedFile] = useState("");
 
   const [categories, setCategories] = useState();
 
@@ -13,55 +16,63 @@ export default function Categories() {
   const [url, setUrl] = useState("");
   const [file, setFile] = useState(null);
 
+  const handleFileInputChange = (e) => {
+    const file = e.target.files[0];
+    console.log(file);
+    previewFile(file);
+  };
+
+  const previewFile = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setPreviewSource(reader.result);
+    };
+  };
+
   const submitHandler = async (e) => {
     e.preventDefault();
     const namex = name.current.value;
     var urlx = "";
 
-    if (file) {
-      const data = new FormData();
-      const fileName = Date.now() + file.name;
-      data.append("name", fileName);
-      data.append("file", file);
-
-      urlx = fileName;
-
-      try {
-        await axios.post(`${api + "/upload"}`, data);
-      } catch (err) {
-        console.log(err);
-      }
-    }
-
     axios({
       method: "POST",
-      data: {
-        namex,
-        urlx,
-      },
+      data: JSON.stringify({ data: previewSource }),
+      headers: { "Content-type": "application/json" },
       withCredentials: true,
-      url: `${api + "/addnewcategory"}`,
-    })
-      .then((res) => {
-        console.log(res);
-        if (res.data.message == "category successfully added") {
-          swal({
-            title: "Category successfully added",
-            text: "Now users can see the new category",
-            icon: "success",
-            button: "Ok",
-          });
-          getAllcategories();
-          document.getElementById("file").value = null;
-          document.getElementById("name").value = null;
-        } else {
-          console.log("something went wrong");
-        }
+      url: `${api + "/upload"}`,
+    }).then((res) => {
+      urx = res.data;
+      axios({
+        method: "POST",
+        data: {
+          namex,
+          urlx,
+        },
+        withCredentials: true,
+        url: `${api + "/addnewcategory"}`,
       })
+        .then((res) => {
+          console.log(res);
+          if (res.data.message == "category successfully added") {
+            swal({
+              title: "Category successfully added",
+              text: "Now users can see the new category",
+              icon: "success",
+              button: "Ok",
+            });
+            getAllcategories();
+            document.getElementById("file").value = null;
+            document.getElementById("name").value = null;
+          } else {
+            console.log("something went wrong");
+          }
+        })
 
-      .catch((error) => {
-        console.log(error);
-      });
+        .catch((error) => {
+          console.log(error);
+        });
+    });
   };
 
   const getAllcategories = () => {
@@ -101,8 +112,9 @@ export default function Categories() {
             <input
               type="file"
               accept=".png,.jpg,.jpeg,.jfif,.webp"
+              value={fileInputState}
               onChange={(e) => {
-                setFile(e.target.files[0]);
+                handleFileInputChange(e);
               }}
               id="file"
             ></input>

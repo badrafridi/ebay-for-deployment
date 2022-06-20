@@ -13,6 +13,7 @@ const path = require("path");
 initializePassport(passport);
 const schedule = require("node-schedule");
 const dotenv = require("dotenv");
+const { cloudinary } = require("./utils/cloudinary");
 
 dotenv.config();
 
@@ -65,21 +66,34 @@ app.listen(process.env.PORT || 4000, () => {
 
 app.use("/images", express.static(path.join(__dirname, "public/images")));
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "public/images");
-  },
-  filename: (req, file, cb) => {
-    cb(null, req.body.name);
-  },
-});
+// const storage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cb(null, "public/images");
+//   },
+//   filename: (req, file, cb) => {
+//     cb(null, req.body.name);
+//   },
+// });
 
-const upload = multer({ storage });
-app.post("/api/upload", upload.single("file"), (req, res) => {
+// const upload = multer({ storage });
+// app.post("/api/upload", upload.single("file"), (req, res) => {
+//   try {
+//     return res.status(200).json("file uploaded successfully");
+//   } catch {
+//     console.log(err);
+//   }
+// });
+
+// upload images
+app.post("/api/upload", async (req, res) => {
   try {
-    return res.status(200).json("file uploaded successfully");
-  } catch {
-    console.log(err);
+    const fileStr = req.body.data;
+    const uploadedResponse = await cloudinary.uploader.upload(fileStr, {
+      upload_preset: "dev_setups",
+    });
+    res.send(uploadedResponse.url);
+  } catch (error) {
+    console.log(error);
   }
 });
 

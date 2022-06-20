@@ -64,10 +64,7 @@ export default function Home() {
                 <>
                   <div className="homeCategoriesSingle" key={cat.id}>
                     <Link to={"/category/" + cat.id}>
-                      <img
-                        className="categoryImage"
-                        src={"/images/" + cat.url}
-                      ></img>
+                      <img className="categoryImage" src={cat.url}></img>
                       <h4 className="categoryTitle">{cat.name}</h4>
                     </Link>
                   </div>
@@ -92,10 +89,7 @@ export default function Home() {
                   <div className="homeProductsSingle" key={product.id}>
                     <Link to={"/product/" + product.id}>
                       {" "}
-                      <img
-                        className="productImage"
-                        src={"/images/" + product.url}
-                      ></img>
+                      <img className="productImage" src={product.url}></img>
                       <h4 className="productTitle">{product.name}</h4>
                     </Link>
                   </div>
@@ -111,10 +105,7 @@ export default function Home() {
                 <div className="homeProductsSingle" key={product.id}>
                   <Link to={"/product/" + product.id}>
                     {" "}
-                    <img
-                      className="productImage"
-                      src={"/images/" + product.url}
-                    ></img>
+                    <img className="productImage" src={product.url}></img>
                     <h4 className="productTitle">{product.name}</h4>
                   </Link>
                 </div>
