@@ -106,11 +106,13 @@ export default function Categories() {
             <input
               type="text"
               ref={name}
+              required
               placeholder="Category Name"
               id="name"
             ></input>
             <input
               type="file"
+              required
               accept=".png,.jpg,.jpeg,.jfif,.webp"
               value={fileInputState}
               onChange={(e) => {

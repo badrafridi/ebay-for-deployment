@@ -244,7 +244,7 @@ export default function New_product() {
         >
           <div className="formItem">
             <label>Product name</label>
-            <input type="text" ref={name}></input>
+            <input type="text" ref={name} required></input>
           </div>
           <div className="formItem">
             <label>Price</label>
@@ -252,13 +252,14 @@ export default function New_product() {
           </div>
           <div className="formItem">
             <label>Description</label>
-            <textarea ref={description}></textarea>
+            <textarea ref={description} required></textarea>
           </div>
           <div className="formItem">
             <label>Selling type</label>
             {/* <input type="text" ref={type}></input> */}
             <select
               className="select"
+              required
               ref={type}
               onChange={(e) => {
                 typeChanged(e);
@@ -270,11 +271,12 @@ export default function New_product() {
           </div>
           <div className="formItem" id="lastDateBlock">
             <label>Auction last date</label>
-            <input type="date" ref={auction_date}></input>
+            <input type="date" ref={auction_date} required></input>
           </div>
           <div className="formItem">
             <label>Product image</label>
             <input
+              required
               type="file"
               accept=".png,.jpg,.jpeg,.jfif,.webp"
               value={fileInputState}
@@ -285,7 +287,7 @@ export default function New_product() {
           </div>
           <div className="formItem">
             <label>Category</label>
-            <select name="category" className="select" ref={category}>
+            <select name="category" className="select" ref={category} required>
               <option value="1">Phones</option>
               <option value="2">Watches</option>
               <option value="3">Cars</option>
