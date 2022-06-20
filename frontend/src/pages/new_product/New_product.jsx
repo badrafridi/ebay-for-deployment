@@ -125,7 +125,7 @@ export default function New_product() {
                   icon: "success",
                   button: "Ok",
                 });
-                // navigate("/account");
+                navigate("/account");
               } else if (
                 res.data.message == "auction product added successfully"
               ) {
