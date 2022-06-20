@@ -197,7 +197,7 @@ export default function New_product() {
           </div>
           <div className="formItem">
             <label>Price</label>
-            <input type="number" ref={price}></input>
+            <input type="number" ref={price} required></input>
           </div>
           <div className="formItem">
             <label>Description</label>
@@ -221,7 +221,7 @@ export default function New_product() {
           </div>
           <div className="formItem" id="lastDateBlock">
             <label>Auction last date</label>
-            <input type="date" ref={auction_date} required></input>
+            <input type="date" ref={auction_date}></input>
           </div>
           <div className="formItem">
             <label>Product image</label>
