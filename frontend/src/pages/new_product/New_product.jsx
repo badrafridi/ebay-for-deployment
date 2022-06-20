@@ -9,6 +9,7 @@ export default function New_product() {
   const [previewSource, setPreviewSource] = useState("");
   const [fileInputState, setFileInputState] = useState("");
   const [selectedFile, setSelectedFile] = useState("");
+  const [categories, setCategories] = useState([]);
 
   const name = useRef();
   const price = useRef();
@@ -152,76 +153,6 @@ export default function New_product() {
     }
   };
 
-  // old submit handler
-  // const submitHandler = async (e) => {
-  //   e.preventDefault();
-  //   const namex = name.current.value;
-  //   const pricex = price.current.value;
-  //   const descriptionx = description.current.value;
-  //   const typex = type.current.value;
-  //   const categoryx = category.current.value;
-  //   const auctionx = auction_date.current.value;
-  //   var urlx = "";
-
-  //   if (file) {
-  //     const data = new FormData();
-  //     const fileName = Date.now() + file.name;
-  //     data.append("name", fileName);
-  //     data.append("file", file);
-
-  //     urlx = fileName;
-
-  //     try {
-  //       await axios.post(`${api + "/upload"}`, data);
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   }
-
-  //   axios({
-  //     method: "POST",
-  //     data: {
-  //       namex,
-  //       pricex,
-  //       descriptionx,
-  //       typex,
-  //       auctionx,
-  //       categoryx,
-  //       urlx,
-  //     },
-  //     withCredentials: true,
-  //     url: `${api + "/addnewproduct"}`,
-  //   })
-  //     .then((res) => {
-  //       console.log(res);
-  //       if (res.data.message == "Direct product added successfully") {
-  //         swal({
-  //           title: "Product added successfully",
-  //           text: "You can see all your products on account page",
-  //           icon: "success",
-  //           button: "Ok",
-  //         });
-  //         navigate("/account");
-  //       } else if (res.data.message == "auction product added successfully") {
-  //         swal({
-  //           title: "Auction Product added successfully",
-  //           text: "You can see all your auction products on account page",
-  //           icon: "success",
-  //           button: "Ok",
-  //         });
-  //         navigate("/account");
-  //       } else {
-  //         console.log(res);
-  //         console.log("something went wrong");
-  //       }
-
-  //       //
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // };
-
   const typeChanged = (e) => {
     if (e.target.value == "auction") {
       document.getElementById("lastDateBlock").style.visibility = "visible";
@@ -233,6 +164,24 @@ export default function New_product() {
       document.getElementById("lastDateBlock").style.marginBottom = "0px";
     }
   };
+
+  const getcategories = () => {
+    axios({
+      method: "GET",
+      withCredentials: true,
+      url: `${api + "/getallcategories"}`,
+    })
+      .then((res) => {
+        setCategories(res.data.row);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    getcategories();
+  }, []);
 
   return (
     <>
@@ -265,6 +214,7 @@ export default function New_product() {
                 typeChanged(e);
               }}
             >
+              <option value="">Selling Type</option>
               <option value="direct">Direct</option>
               <option value="auction">Auction</option>
             </select>
@@ -288,13 +238,14 @@ export default function New_product() {
           <div className="formItem">
             <label>Category</label>
             <select name="category" className="select" ref={category} required>
-              <option value="1">Phones</option>
-              <option value="2">Watches</option>
-              <option value="3">Cars</option>
-              <option value="4">Tablets</option>
-              <option value="5">Houses</option>
-              <option value="6">Others</option>
-              <option value="7">Guns</option>
+              {categories &&
+                categories.map((cat) => {
+                  return (
+                    <>
+                      <option value={cat.id}>{cat.name}</option>
+                    </>
+                  );
+                })}
             </select>
           </div>
           <div className="formItem">
