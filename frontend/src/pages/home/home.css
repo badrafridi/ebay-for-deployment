@@ -135,6 +135,13 @@ p, a , li , h1, h2, h3, h4, h5, h6 {
 
   @media screen and (max-width: 600px) {
 
+
+    /* for login page  */
+    div.loginForm>form {
+      padding: 43px !important;
+      width: 90% !important;
+  }
+    /* login page end  */
     .homeProductsSingle {
       flex: 0 0 45%;
     }

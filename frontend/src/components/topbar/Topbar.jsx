@@ -245,7 +245,10 @@ export default function Topbar() {
               </Link>
             </div>
             <div>
-              <Link to="/products">
+              <Link to="/products" onClick={() => {
+              var x = document.getElementById("check-mob");
+              x.checked = false;
+            }}>
                 <i class="fa-solid fa-magnifying-glass myIcon"></i>
               </Link>
             </div>
@@ -260,18 +263,30 @@ export default function Topbar() {
                 </>
               )}
               <li>
-                <Link to="/products">products</Link>
+                <Link to="/products" onClick={() => {
+              var x = document.getElementById("check-mob");
+              x.checked = false;
+            }}>products</Link>
               </li>
               <li>
-                <Link to="/categories">categories</Link>
+                <Link to="/categories" onClick={() => {
+              var x = document.getElementById("check-mob");
+              x.checked = false;
+            }}>categories</Link>
               </li>
               {usertop && (
                 <>
                   <li>
-                    <Link to="/cart">cart</Link>
+                    <Link to="/cart" onClick={() => {
+              var x = document.getElementById("check-mob");
+              x.checked = false;
+            }}>cart</Link>
                   </li>
                   <li>
-                    <Link to="/account">account</Link>
+                    <Link to="/account" onClick={() => {
+              var x = document.getElementById("check-mob");
+              x.checked = false;
+            }}>account</Link>
                   </li>
                 </>
               )}
@@ -288,7 +303,10 @@ export default function Topbar() {
                 </>
               ) : (
                 <li className="topListItem">
-                  <Link to="/login">login</Link>
+                  <Link to="/login" onClick={() => {
+              var x = document.getElementById("check-mob");
+              x.checked = false;
+            }}>login</Link>
                 </li>
               )}
             </ul>
