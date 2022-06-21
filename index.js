@@ -267,6 +267,15 @@ app.post("/api/addnewproduct", (req, res) => {
     var status = "not sold";
     var auction_status = "pending";
 
+    console.log('name: ' + req.body.namex)
+    console.log('price: ' + req.body.pricex)
+    console.log('description: ' + req.body.descriptionx)
+    console.log('type: ' + req.body.typex);
+    console.log('category: ' + req.body.categoryx);
+    console.log('url: ' + req.body.urlx);
+    console.log('date_end: ' + req.body.auctionx);
+    console.log('last_bid:' + req.body.lastbid);
+
     if (type == "direct") {
       const sqlcheck =
         "INSERT INTO products (name,price,description,type,category_id,url,user_id,status) VALUES (?,?,?,?,?,?,?,?)";
