@@ -273,7 +273,10 @@ export default function Account() {
                           className="fa fa-trash"
                           aria-hidden="true"
                           onClick={() => {
-                            deleteProduct(product.id);
+                            if(window.confirm("Are you sure you want to delete this product?")){
+                              deleteProduct(product.id);
+                            }
+
                           }}
                         ></i>
                       </div>
