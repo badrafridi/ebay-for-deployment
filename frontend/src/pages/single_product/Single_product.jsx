@@ -63,11 +63,11 @@ export default function Single_product() {
           setLoading(false)
         }
         if (res.data.row[0].type === "auction") {
-          var x = res.data.row[0].end_date;
-          if (new Date(x).toLocaleString() < new Date().toLocaleString()) {
-            console.log("auction time has passed");
-            setTimepassed(true);
-          }
+          // var x = res.data.row[0].end_date;
+          // if (new Date(x).toLocaleString() < new Date().toLocaleString()) {
+          //   console.log("auction time has passed");
+          //   setTimepassed(true);
+          // }
           getAuctionDetails();
         }
       })
@@ -88,7 +88,7 @@ export default function Single_product() {
           setAuctiondetails(res.data.row[0]);
           setLoading(false)
           var x = res.data.row[0].end_date;
-          if (new Date(x).toLocaleString() < new Date().toLocaleString()) {
+          if (new Date(x) < new Date()) {
             console.log("auction time has passed");
             setTimepassed(true);
           }
