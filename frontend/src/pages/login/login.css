@@ -21,3 +21,13 @@ div.loginForm > form {
     flex-direction: column;
     align-items: stretch;
 }
+
+@media screen and (max-width: 600px) {
+
+
+    /* for login page  */
+    div.loginForm>form {
+      padding: 43px !important;
+      width: 90% !important;
+  }
+}
