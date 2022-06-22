@@ -536,18 +536,18 @@ export default function Single_order() {
             )}
           </>
         )}
+        {buyer && (
+          <>
+            <button
+              onClick={(id) => {
+                appeal(id);
+              }}
+            >
+              Appeal
+            </button>
+          </>
+        )}
       </div>
-      {buyer && (
-        <>
-          <button
-            onClick={(id) => {
-              appeal(id);
-            }}
-          >
-            Appeal
-          </button>
-        </>
-      )}
     </>
   );
 }

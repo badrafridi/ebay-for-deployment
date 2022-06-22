@@ -724,7 +724,7 @@ app.post("/api/markasdelivered", (req, res) => {
 
 // appeal on direct order by buyer
 app.post("/api/appeal", (req, res) => {
-  const id = req.body.order_id;
+  const id = req.body.id;
   const sqlcheck = " UPDATE orders SET status = 'appeal' WHERE id = ? ";
   db.query(sqlcheck, id, (err, row) => {
     if (err) {
