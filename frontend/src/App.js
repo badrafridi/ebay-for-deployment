@@ -36,7 +36,8 @@ function App() {
 
   const providerValue = useMemo(
     () => ({ usertop, setUsertop }),
-    [usertop, setUsertop]
+    // [usertop, setUsertop]
+    []
   );
   const providerValuesforcart = useMemo(
     () => ({ cart, setCart }),

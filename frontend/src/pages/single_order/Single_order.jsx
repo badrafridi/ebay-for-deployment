@@ -57,6 +57,8 @@ export default function Single_order() {
       url: `${api + "/markasdelivered"}`,
     })
       .then((res) => {
+        console.log(res);
+        console.log("successfully delivered");
         if (res.data.message == "successfully delivered") {
           swal({
             title: "You have successfully marked the order as delivered.",
