@@ -48,6 +48,9 @@ export default function Single_order() {
   };
 
   const markDelivered = (order_id) => {
+    console.log(
+      "mark as delivered function started with order id: " + order_id
+    );
     axios({
       method: "POST",
       data: {

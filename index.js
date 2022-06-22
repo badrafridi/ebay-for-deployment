@@ -709,7 +709,7 @@ app.get("/api/userauctionbuyingorders", (req, res) => {
 // set direct order as delivered from seller
 app.post("/api/markasdelivered", (req, res) => {
   const id = req.body.order_id;
-  const sqlcheck = " UPDATE orders SET status = 'delivered' WHERE id = '?' ";
+  const sqlcheck = " UPDATE orders SET status = 'delivered' WHERE id = ? ";
   db.query(sqlcheck, id, (err, row) => {
     if (err) {
       console.log(err);
