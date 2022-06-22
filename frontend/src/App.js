@@ -134,13 +134,13 @@ function App() {
 
             <Route
               path="/order/:orderId"
-              element={<Single_order />}
+              element={usertop ? <Single_order /> : <Navigate to="/login" />}
               title="Order"
             />
 
             <Route
               path="/auction/:auctionId"
-              element={<Single_auction />}
+              element={usertop ? <Single_auction /> : <Navigate to="/login" />}
               title="Auction"
             />
 

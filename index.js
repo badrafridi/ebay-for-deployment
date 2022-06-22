@@ -794,7 +794,7 @@ app.get("/api/getproductsforcart/:id", (req, res) => {
 // set order as completed from buyer
 app.post("/api/markascompleted", (req, res) => {
   const id = req.body.order_id;
-  const sqlcheck = " UPDATE orders SET status = 'completed' WHERE id = '?' ";
+  const sqlcheck = " UPDATE orders SET status = 'completed' WHERE id = ? ";
   db.query(sqlcheck, id, (err, row) => {
     if (err) {
       console.log(err);
@@ -802,7 +802,7 @@ app.post("/api/markascompleted", (req, res) => {
     }
     if (row) {
       // console.log("user registered successfully");
-      res.send({ message: "order successfully completed ", row });
+      res.send({ message: "order successfully completed", row });
     }
   });
 });
