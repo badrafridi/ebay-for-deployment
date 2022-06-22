@@ -57,6 +57,7 @@ function App() {
       .then((res) => res.json())
       .then((res) => {
         if (res.user) {
+          console.log(res.user);
           setUsertop(res.user[0]);
         } else {
           console.log("user not found");

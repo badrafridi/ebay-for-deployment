@@ -31,6 +31,7 @@ export default function Single_order() {
         setOrderdetails(res.data.row[0]);
         console.log(res.data.row[0]);
         console.log(res.data.row[0].seller_id);
+        console.log(usertop);
         console.log(usertop.id);
         if (res.data.row[0].seller_id == usertop.id) {
           setSeller(true);
