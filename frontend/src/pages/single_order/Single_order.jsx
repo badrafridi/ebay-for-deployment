@@ -262,7 +262,7 @@ export default function Single_order() {
               <>
                 <button
                   onClick={() => {
-                    orderReceived(orderdetails.id);
+                    orderReceived(id);
                   }}
                   className="btn btn-primary btn-block mb-4"
                 >
@@ -382,7 +382,7 @@ export default function Single_order() {
                 </p>
                 <button
                   onClick={() => {
-                    markDelivered(orderdetails.id);
+                    markDelivered(id);
                   }}
                   className="btn btn-primary btn-block mb-4"
                 >
