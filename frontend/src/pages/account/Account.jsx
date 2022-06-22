@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import swal from "sweetalert";
 import "./account.css";
+import { UserContext } from "../../userContext";
 
 export default function Account() {
   const api = process.env.REACT_APP_API;
@@ -11,6 +12,7 @@ export default function Account() {
   const [buyingauctionorders, setBuyingauctionorders] = useState([]);
   const [sellingdirectorders, setSellingdirectorders] = useState([]);
   const [sellingauctionorders, setSellingauctionorders] = useState([]);
+  const { usertop, setUsertop } = useContext(UserContext);
 
   const getSingleUserProducts = () => {
     axios({
@@ -136,10 +138,8 @@ export default function Account() {
         <h1 className="heading">Account</h1>
         <div className="accountDetails">
           <p>
-            <b>Name: </b>Badr Afridi
-          </p>
-          <p>
-            <b>Account status: </b>Buyer and Seller
+            <b>Name: </b>
+            {usertop.username}
           </p>
         </div>
         <div className="tab">
@@ -273,10 +273,13 @@ export default function Account() {
                           className="fa fa-trash"
                           aria-hidden="true"
                           onClick={() => {
-                            if(window.confirm("Are you sure you want to delete this product?")){
+                            if (
+                              window.confirm(
+                                "Are you sure you want to delete this product?"
+                              )
+                            ) {
                               deleteProduct(product.id);
                             }
-
                           }}
                         ></i>
                       </div>

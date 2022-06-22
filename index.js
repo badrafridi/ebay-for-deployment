@@ -452,7 +452,7 @@ app.get("/api/allsingleauctiondetailstwo/:id", (req, res) => {
 app.post("/api/getproductsforcart", (req, res) => {
   const ids = req.body.cart;
 
-  if ((ids.length = 0)) {
+  if (ids.length == 0) {
     res.send("no products found");
   } else {
     var sqlcheck = "SELECT * FROM products WHERE id =";
