@@ -103,6 +103,33 @@ export default function Single_order() {
       });
   };
 
+  const appeal = (id) => {
+    axios({
+      method: "POST",
+      data: {
+        id,
+      },
+      withCredentials: true,
+      url: `${api + "/appeal"}`,
+    })
+      .then((res) => {
+        console.log(res);
+        console.log("appeal done");
+        if (res.data.message == "appeal done") {
+          swal({
+            title: "Appeal to TheBay successfully done",
+            text: "Appeal to TheBay successfully done",
+            icon: "success",
+            button: "Ok",
+          });
+        }
+        getSingleorder();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   const changeColor = (e) => {
     e.target.classList.toggle("selected");
   };
@@ -256,243 +283,253 @@ export default function Single_order() {
           {orderdetails.date}
         </p>
 
-        {buyer ? (
+        {orderdetails.status == "appeal" ? (
           <>
-            {orderdetails.status == "delivered" ? (
-              <>
-                <button
-                  onClick={() => {
-                    orderReceived(id);
-                  }}
-                  className="btn btn-primary btn-block mb-4"
-                >
-                  Received
-                </button>
-              </>
-            ) : orderdetails.status == "pending" ? (
-              <>Please wait for the seller to deliver the order</>
-            ) : (
-              <>
-                {orderdetails.rated_by_buyer ? (
-                  <>
-                    {" "}
-                    <p className="green">
-                      The order is completed and you have rated the seller.
-                      thank you
-                    </p>
-                  </>
-                ) : (
-                  <>
-                    <p className="green">
-                      the order is completed you can now rate the seller
-                    </p>
-                    <label for="star-one">
-                      <i
-                        class="fa-solid fa-star star-one"
-                        onClick={(e) => {
-                          changeColor(e);
-                        }}
-                      ></i>
-                    </label>
-                    <input
-                      type="checkbox"
-                      id="star-one"
-                      ref={starOne}
-                      style={{ display: "none" }}
-                    ></input>
-
-                    <label for="star-two">
-                      <i
-                        class="fa-solid fa-star star-two"
-                        onClick={(e) => {
-                          changeColor(e);
-                        }}
-                      ></i>
-                    </label>
-                    <input
-                      type="checkbox"
-                      id="star-two"
-                      ref={starTwo}
-                      style={{ display: "none" }}
-                    ></input>
-
-                    <label for="star-three">
-                      <i
-                        class="fa-solid fa-star star-three"
-                        onClick={(e) => {
-                          changeColor(e);
-                        }}
-                      ></i>
-                    </label>
-                    <input
-                      type="checkbox"
-                      id="star-three"
-                      ref={starThree}
-                      style={{ display: "none" }}
-                    ></input>
-
-                    <label for="star-four">
-                      <i
-                        class="fa-solid fa-star star-four"
-                        onClick={(e) => {
-                          changeColor(e);
-                        }}
-                      ></i>
-                    </label>
-                    <input
-                      type="checkbox"
-                      id="star-four"
-                      ref={starFour}
-                      style={{ display: "none" }}
-                    ></input>
-
-                    <label for="star-five">
-                      <i
-                        class="fa-solid fa-star star-five"
-                        onClick={(e) => {
-                          changeColor(e);
-                        }}
-                      ></i>
-                    </label>
-                    <input
-                      type="checkbox"
-                      id="star-five"
-                      ref={starFive}
-                      style={{ display: "none" }}
-                    ></input>
-
-                    <button
-                      onClick={(e) => {
-                        ratetheorder(e);
-                      }}
-                    >
-                      Submit
-                    </button>
-                  </>
-                )}
-              </>
-            )}
+            Buyer appealed to the admin about the order. Please wait for further
+            notice from admin.
           </>
         ) : (
           <>
-            {seller && orderdetails.status == "pending" ? (
+            {" "}
+            {buyer ? (
               <>
-                <p className="red">
-                  Please deliver this order as soon as possible.
-                </p>
-                <button
-                  onClick={() => {
-                    markDelivered(id);
-                  }}
-                  className="btn btn-primary btn-block mb-4"
-                >
-                  Mark as delivered
-                </button>
-              </>
-            ) : orderdetails.status == "delivered" ? (
-              <>
-                {" "}
-                <p className="green">
-                  Order submitted as delivered. please wait for the customer to
-                  accept.
-                </p>
+                {orderdetails.status == "delivered" ? (
+                  <>
+                    <button
+                      onClick={() => {
+                        orderReceived(id);
+                      }}
+                      className="btn btn-primary btn-block mb-4"
+                    >
+                      Received
+                    </button>
+                  </>
+                ) : orderdetails.status == "pending" ? (
+                  <>Please wait for the seller to deliver the order</>
+                ) : (
+                  <>
+                    {orderdetails.rated_by_buyer ? (
+                      <>
+                        {" "}
+                        <p className="green">
+                          The order is completed and you have rated the seller.
+                          thank you
+                        </p>
+                      </>
+                    ) : (
+                      <>
+                        <p className="green">
+                          the order is completed you can now rate the seller
+                        </p>
+                        <label for="star-one">
+                          <i
+                            class="fa-solid fa-star star-one"
+                            onClick={(e) => {
+                              changeColor(e);
+                            }}
+                          ></i>
+                        </label>
+                        <input
+                          type="checkbox"
+                          id="star-one"
+                          ref={starOne}
+                          style={{ display: "none" }}
+                        ></input>
+
+                        <label for="star-two">
+                          <i
+                            class="fa-solid fa-star star-two"
+                            onClick={(e) => {
+                              changeColor(e);
+                            }}
+                          ></i>
+                        </label>
+                        <input
+                          type="checkbox"
+                          id="star-two"
+                          ref={starTwo}
+                          style={{ display: "none" }}
+                        ></input>
+
+                        <label for="star-three">
+                          <i
+                            class="fa-solid fa-star star-three"
+                            onClick={(e) => {
+                              changeColor(e);
+                            }}
+                          ></i>
+                        </label>
+                        <input
+                          type="checkbox"
+                          id="star-three"
+                          ref={starThree}
+                          style={{ display: "none" }}
+                        ></input>
+
+                        <label for="star-four">
+                          <i
+                            class="fa-solid fa-star star-four"
+                            onClick={(e) => {
+                              changeColor(e);
+                            }}
+                          ></i>
+                        </label>
+                        <input
+                          type="checkbox"
+                          id="star-four"
+                          ref={starFour}
+                          style={{ display: "none" }}
+                        ></input>
+
+                        <label for="star-five">
+                          <i
+                            class="fa-solid fa-star star-five"
+                            onClick={(e) => {
+                              changeColor(e);
+                            }}
+                          ></i>
+                        </label>
+                        <input
+                          type="checkbox"
+                          id="star-five"
+                          ref={starFive}
+                          style={{ display: "none" }}
+                        ></input>
+
+                        <button
+                          onClick={(e) => {
+                            ratetheorder(e);
+                          }}
+                        >
+                          Submit
+                        </button>
+                      </>
+                    )}
+                  </>
+                )}
               </>
             ) : (
               <>
-                {orderdetails.rated_by_seller ? (
+                {seller && orderdetails.status == "pending" ? (
                   <>
+                    <p className="red">
+                      Please deliver this order as soon as possible.
+                    </p>
+                    <button
+                      onClick={() => {
+                        markDelivered(id);
+                      }}
+                      className="btn btn-primary btn-block mb-4"
+                    >
+                      Mark as delivered
+                    </button>
+                  </>
+                ) : orderdetails.status == "delivered" ? (
+                  <>
+                    {" "}
                     <p className="green">
-                      The order is completed and you have rated the buyer. thank
-                      you
+                      Order submitted as delivered. please wait for the customer
+                      to accept.
                     </p>
                   </>
                 ) : (
                   <>
-                    <p className="green">
-                      the order is completed you can now rate the buyer
-                    </p>
-                    <label for="star-one">
-                      <i
-                        class="fa-solid fa-star star-one"
-                        onClick={(e) => {
-                          changeColor(e);
-                        }}
-                      ></i>
-                    </label>
-                    <input
-                      type="checkbox"
-                      id="star-one"
-                      ref={starOne}
-                      style={{ display: "none" }}
-                    ></input>
+                    {orderdetails.rated_by_seller ? (
+                      <>
+                        <p className="green">
+                          The order is completed and you have rated the buyer.
+                          thank you
+                        </p>
+                      </>
+                    ) : (
+                      <>
+                        <p className="green">
+                          the order is completed you can now rate the buyer
+                        </p>
+                        <label for="star-one">
+                          <i
+                            class="fa-solid fa-star star-one"
+                            onClick={(e) => {
+                              changeColor(e);
+                            }}
+                          ></i>
+                        </label>
+                        <input
+                          type="checkbox"
+                          id="star-one"
+                          ref={starOne}
+                          style={{ display: "none" }}
+                        ></input>
 
-                    <label for="star-two">
-                      <i
-                        class="fa-solid fa-star star-two"
-                        onClick={(e) => {
-                          changeColor(e);
-                        }}
-                      ></i>
-                    </label>
-                    <input
-                      type="checkbox"
-                      id="star-two"
-                      ref={starTwo}
-                      style={{ display: "none" }}
-                    ></input>
+                        <label for="star-two">
+                          <i
+                            class="fa-solid fa-star star-two"
+                            onClick={(e) => {
+                              changeColor(e);
+                            }}
+                          ></i>
+                        </label>
+                        <input
+                          type="checkbox"
+                          id="star-two"
+                          ref={starTwo}
+                          style={{ display: "none" }}
+                        ></input>
 
-                    <label for="star-three">
-                      <i
-                        class="fa-solid fa-star star-three"
-                        onClick={(e) => {
-                          changeColor(e);
-                        }}
-                      ></i>
-                    </label>
-                    <input
-                      type="checkbox"
-                      id="star-three"
-                      ref={starThree}
-                      style={{ display: "none" }}
-                    ></input>
+                        <label for="star-three">
+                          <i
+                            class="fa-solid fa-star star-three"
+                            onClick={(e) => {
+                              changeColor(e);
+                            }}
+                          ></i>
+                        </label>
+                        <input
+                          type="checkbox"
+                          id="star-three"
+                          ref={starThree}
+                          style={{ display: "none" }}
+                        ></input>
 
-                    <label for="star-four">
-                      <i
-                        class="fa-solid fa-star star-four"
-                        onClick={(e) => {
-                          changeColor(e);
-                        }}
-                      ></i>
-                    </label>
-                    <input
-                      type="checkbox"
-                      id="star-four"
-                      ref={starFour}
-                      style={{ display: "none" }}
-                    ></input>
+                        <label for="star-four">
+                          <i
+                            class="fa-solid fa-star star-four"
+                            onClick={(e) => {
+                              changeColor(e);
+                            }}
+                          ></i>
+                        </label>
+                        <input
+                          type="checkbox"
+                          id="star-four"
+                          ref={starFour}
+                          style={{ display: "none" }}
+                        ></input>
 
-                    <label for="star-five">
-                      <i
-                        class="fa-solid fa-star star-five"
-                        onClick={(e) => {
-                          changeColor(e);
-                        }}
-                      ></i>
-                    </label>
-                    <input
-                      type="checkbox"
-                      id="star-five"
-                      ref={starFive}
-                      style={{ display: "none" }}
-                    ></input>
+                        <label for="star-five">
+                          <i
+                            class="fa-solid fa-star star-five"
+                            onClick={(e) => {
+                              changeColor(e);
+                            }}
+                          ></i>
+                        </label>
+                        <input
+                          type="checkbox"
+                          id="star-five"
+                          ref={starFive}
+                          style={{ display: "none" }}
+                        ></input>
 
-                    <button
-                      onClick={(e) => {
-                        ratetheorder(e);
-                      }}
-                    >
-                      Submit
-                    </button>
+                        <button
+                          onClick={(e) => {
+                            ratetheorder(e);
+                          }}
+                        >
+                          Submit
+                        </button>
+                      </>
+                    )}
                   </>
                 )}
               </>
@@ -500,6 +537,17 @@ export default function Single_order() {
           </>
         )}
       </div>
+      {buyer && (
+        <>
+          <button
+            onClick={(id) => {
+              appeal(id);
+            }}
+          >
+            Appeal
+          </button>
+        </>
+      )}
     </>
   );
 }

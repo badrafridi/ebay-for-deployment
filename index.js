@@ -708,7 +708,7 @@ app.get("/api/userauctionbuyingorders", (req, res) => {
 
 // set direct order as delivered from seller
 app.post("/api/markasdelivered", (req, res) => {
-  const id = req.body.order_id;
+  const id = req.body.id;
   const sqlcheck = " UPDATE orders SET status = 'delivered' WHERE id = ? ";
   db.query(sqlcheck, id, (err, row) => {
     if (err) {
@@ -718,6 +718,22 @@ app.post("/api/markasdelivered", (req, res) => {
     if (row) {
       // console.log("user registered successfully");
       res.send({ message: "successfully delivered", row });
+    }
+  });
+});
+
+// appeal on direct order by buyer
+app.post("/api/appeal", (req, res) => {
+  const id = req.body.order_id;
+  const sqlcheck = " UPDATE orders SET status = 'appeal' WHERE id = ? ";
+  db.query(sqlcheck, id, (err, row) => {
+    if (err) {
+      console.log(err);
+      res.send(err);
+    }
+    if (row) {
+      // console.log("user registered successfully");
+      res.send({ message: "appeal done", row });
     }
   });
 });
