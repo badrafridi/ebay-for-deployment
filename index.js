@@ -452,24 +452,28 @@ app.get("/api/allsingleauctiondetailstwo/:id", (req, res) => {
 app.post("/api/getproductsforcart", (req, res) => {
   const ids = req.body.cart;
 
-  var sqlcheck = "SELECT * FROM products WHERE id =";
-  for (var i = 0; i < ids.length; i++) {
-    if (i == ids.length - 1) {
-      sqlcheck = sqlcheck + ` ${ids[i]}`;
-    } else {
-      sqlcheck = sqlcheck + ` ${ids[i]} OR id =`;
+  if ((ids.length = 0)) {
+    res.send("no products found");
+  } else {
+    var sqlcheck = "SELECT * FROM products WHERE id =";
+    for (var i = 0; i < ids.length; i++) {
+      if (i == ids.length - 1) {
+        sqlcheck = sqlcheck + ` ${ids[i]}`;
+      } else {
+        sqlcheck = sqlcheck + ` ${ids[i]} OR id =`;
+      }
     }
+    db.query(sqlcheck, (err, row) => {
+      if (err) {
+        console.log(err);
+        res.send(err);
+      }
+      if (row) {
+        // console.log("user registered successfully");
+        res.send({ message: "here are list of products from cart", row });
+      }
+    });
   }
-  db.query(sqlcheck, (err, row) => {
-    if (err) {
-      console.log(err);
-      res.send(err);
-    }
-    if (row) {
-      // console.log("user registered successfully");
-      res.send({ message: "here are list of products from cart", row });
-    }
-  });
 });
 
 // place order
