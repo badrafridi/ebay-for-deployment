@@ -17,9 +17,10 @@ const columns = [
 
 export default function All_products() {
   const [allproducts, setAllproducts] = useState([]);
+  const api = process.env.REACT_APP_API;
 
   const getallproducts = () => {
-    const api = process.env.REACT_APP_API;
+
 
     console.log("products function running");
     axios({
@@ -111,18 +112,6 @@ export default function All_products() {
           <tbody>
             {allproducts &&
               allproducts
-                .filter((value) => {
-                  if (search == "") {
-                    return value;
-                  } else if (
-                    value.name
-                      .toLowerCase()
-                      .includes(search.toLowerCase())
-                  ) {
-                    links();
-                    return value;
-                  }
-                })
                 .map((p) => {
                   return (
                     <>
