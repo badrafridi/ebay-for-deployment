@@ -300,18 +300,6 @@ function App() {
                 element={<New_product />}
                 title="New Product"
               />
-
-              <Route
-                path="/order/:orderId"
-                element={<Single_order />}
-                title="Order"
-              />
-
-              <Route
-                path="/auction/:auctionId"
-                element={<Single_auction />}
-                title="Auction"
-              />
             </Routes>
 
             <Footer />
