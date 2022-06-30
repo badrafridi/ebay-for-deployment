@@ -610,7 +610,7 @@ app.delete("/api/deleteproduct", (req, res) => {
 // delete product by admin
 app.delete("/api/deleteproductbyadmin", (req, res) => {
   if (req.user) {
-    console.log(req.user)
+    console.log(req.user);
     const sqlcheck = "DELETE FROM products WHERE id = ?";
     db.query(sqlcheck, req.body.id, (err, row) => {
       if (err) {
@@ -625,15 +625,6 @@ app.delete("/api/deleteproductbyadmin", (req, res) => {
     res.send("sorry you are not authenticated");
   }
 });
-
-
-
-
-
-
-
-
-
 
 // delete category
 app.delete("/api/deletecategory", (req, res) => {
@@ -653,20 +644,6 @@ app.delete("/api/deletecategory", (req, res) => {
     res.send("sorry you are not authenticated");
   }
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // get all categories
 app.get("/api/getallcategories", (req, res) => {

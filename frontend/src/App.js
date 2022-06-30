@@ -31,7 +31,7 @@ import All_products from "./admin/all_products/All_products";
 function App() {
   const [usertop, setUsertop] = useState(null);
   const [cart, setCart] = useState([]);
-  const [isadmin, setIsadmin] = useState();
+  const [isadmin, setIsadmin] = useState(null);
   const api = process.env.REACT_APP_API;
 
   const providerValue = useMemo(
@@ -74,8 +74,6 @@ function App() {
   }, []);
 
   useEffect(() => {
-    console.log("admin status");
-    console.log(usertop);
     if (usertop) {
       if (usertop.status == 1) {
         setIsadmin(true);
@@ -83,93 +81,245 @@ function App() {
     }
   }, [usertop]);
 
-  return (
-    <UserContext.Provider value={providerValue}>
-      <CartContext.Provider value={providerValuesforcart}>
-        <Router>
-          {<Topbar usertop={usertop} />}
-          <Routes>
-            {/* -------- admin routes ---------- */}
-            <Route path="/" exact element={<Home />} title="Home" />
-            <Route
-              path="/login"
-              element={usertop ? <Navigate to="/" /> : <Login />}
-              title="Login"
-            />
+  if (isadmin != null) {
+    return (
+      <UserContext.Provider value={providerValue}>
+        <CartContext.Provider value={providerValuesforcart}>
+          <Router>
+            {<Topbar usertop={usertop} />}
+            <Routes>
+              {/* -------- admin routes ---------- */}
+              <Route path="/" exact element={<Home />} title="Home" />
+              <Route
+                path="/login"
+                element={usertop ? <Navigate to="/" /> : <Login />}
+                title="Login"
+              />
 
-            <Route path="/products" element={<Products />} title="Products" />
-            <Route
-              path="/product/:productId"
-              element={<Single_product />}
-              title="Product"
-            />
+              <Route path="/products" element={<Products />} title="Products" />
+              <Route
+                path="/product/:productId"
+                element={<Single_product />}
+                title="Product"
+              />
 
-            <Route
-              path="/categories"
-              element={<Categories />}
-              title="Categories"
-            />
-            <Route
-              path="/category/:categoryId"
-              element={<Single_category />}
-              title="Category"
-            />
+              <Route
+                path="/categories"
+                element={<Categories />}
+                title="Categories"
+              />
+              <Route
+                path="/category/:categoryId"
+                element={<Single_category />}
+                title="Category"
+              />
 
-            <Route
-              path="/cart"
-              element={usertop ? <Cart /> : <Navigate to="/login" />}
-              title="Cart"
-            />
-            <Route
-              path="/account"
-              element={usertop ? <Account /> : <Navigate to="/login" />}
-              title="Account"
-            />
+              <Route
+                path="/cart"
+                element={usertop ? <Cart /> : <Navigate to="/login" />}
+                title="Cart"
+              />
+              <Route
+                path="/account"
+                element={usertop ? <Account /> : <Navigate to="/login" />}
+                title="Account"
+              />
 
-            <Route
-              path="/add-new-product"
-              element={usertop ? <New_product /> : <Navigate to="/login" />}
-              title="New Product"
-            />
+              <Route
+                path="/add-new-product"
+                element={usertop ? <New_product /> : <Navigate to="/login" />}
+                title="New Product"
+              />
 
-            <Route
-              path="/order/:orderId"
-              element={usertop ? <Single_order /> : <Navigate to="/login" />}
-              title="Order"
-            />
+              <Route
+                path="/order/:orderId"
+                element={usertop ? <Single_order /> : <Navigate to="/login" />}
+                title="Order"
+              />
 
-            <Route
-              path="/auction/:auctionId"
-              element={usertop ? <Single_auction /> : <Navigate to="/login" />}
-              title="Auction"
-            />
+              <Route
+                path="/auction/:auctionId"
+                element={
+                  usertop ? <Single_auction /> : <Navigate to="/login" />
+                }
+                title="Auction"
+              />
 
-            {/* ---------------admin routes----------------- */}
-            <Route
-              path="admin/all-orders"
-              element={isadmin ? <All_orders /> : <Navigate to="/login" />}
-            />
-            <Route
-              path="admin/all-auctions"
-              element={isadmin ? <All_auctions /> : <Navigate to="/login" />}
-            />
-            <Route
-              path="admin/all-products"
-              element={isadmin ? <All_products /> : <Navigate to="/login" />}
-            />
-            <Route
-              path="admin/categories"
-              element={
-                isadmin ? <Admin_categories /> : <Navigate to="/login" />
-              }
-            />
-          </Routes>
+              {/* ---------------admin routes----------------- */}
+              <Route
+                path="admin/all-orders"
+                element={isadmin ? <All_orders /> : <Navigate to="/login" />}
+              />
+              <Route
+                path="admin/all-auctions"
+                element={isadmin ? <All_auctions /> : <Navigate to="/login" />}
+              />
+              <Route
+                path="admin/all-products"
+                element={isadmin ? <All_products /> : <Navigate to="/login" />}
+              />
+              <Route
+                path="admin/categories"
+                element={
+                  isadmin ? <Admin_categories /> : <Navigate to="/login" />
+                }
+              />
+            </Routes>
 
-          <Footer />
-        </Router>
-      </CartContext.Provider>
-    </UserContext.Provider>
-  );
+            <Footer />
+          </Router>
+        </CartContext.Provider>
+      </UserContext.Provider>
+    );
+  }
+
+  if (usertop != null) {
+    return (
+      <UserContext.Provider value={providerValue}>
+        <CartContext.Provider value={providerValuesforcart}>
+          <Router>
+            {<Topbar usertop={usertop} />}
+            <Routes>
+              {/* -------- admin routes ---------- */}
+              <Route path="/" exact element={<Home />} title="Home" />
+              <Route
+                path="/login"
+                element={usertop ? <Navigate to="/" /> : <Login />}
+                title="Login"
+              />
+
+              <Route path="/products" element={<Products />} title="Products" />
+              <Route
+                path="/product/:productId"
+                element={<Single_product />}
+                title="Product"
+              />
+
+              <Route
+                path="/categories"
+                element={<Categories />}
+                title="Categories"
+              />
+              <Route
+                path="/category/:categoryId"
+                element={<Single_category />}
+                title="Category"
+              />
+
+              <Route
+                path="/cart"
+                element={usertop ? <Cart /> : <Navigate to="/login" />}
+                title="Cart"
+              />
+              <Route
+                path="/account"
+                element={usertop ? <Account /> : <Navigate to="/login" />}
+                title="Account"
+              />
+
+              <Route
+                path="/add-new-product"
+                element={usertop ? <New_product /> : <Navigate to="/login" />}
+                title="New Product"
+              />
+
+              <Route
+                path="/order/:orderId"
+                element={usertop ? <Single_order /> : <Navigate to="/login" />}
+                title="Order"
+              />
+
+              <Route
+                path="/auction/:auctionId"
+                element={
+                  usertop ? <Single_auction /> : <Navigate to="/login" />
+                }
+                title="Auction"
+              />
+
+              {/* ---------------admin routes----------------- */}
+              <Route
+                path="admin/all-orders"
+                element={isadmin ? <All_orders /> : <Navigate to="/login" />}
+              />
+              <Route
+                path="admin/all-auctions"
+                element={isadmin ? <All_auctions /> : <Navigate to="/login" />}
+              />
+              <Route
+                path="admin/all-products"
+                element={isadmin ? <All_products /> : <Navigate to="/login" />}
+              />
+              <Route
+                path="admin/categories"
+                element={
+                  isadmin ? <Admin_categories /> : <Navigate to="/login" />
+                }
+              />
+            </Routes>
+
+            <Footer />
+          </Router>
+        </CartContext.Provider>
+      </UserContext.Provider>
+    );
+  } else {
+    return (
+      <UserContext.Provider value={providerValue}>
+        <CartContext.Provider value={providerValuesforcart}>
+          <Router>
+            {<Topbar usertop={usertop} />}
+            <Routes>
+              {/* -------- admin routes ---------- */}
+              <Route path="/" exact element={<Home />} title="Home" />
+              <Route path="/login" element={<Login />} title="Login" />
+
+              <Route path="/products" element={<Products />} title="Products" />
+              <Route
+                path="/product/:productId"
+                element={<Single_product />}
+                title="Product"
+              />
+
+              <Route
+                path="/categories"
+                element={<Categories />}
+                title="Categories"
+              />
+              <Route
+                path="/category/:categoryId"
+                element={<Single_category />}
+                title="Category"
+              />
+
+              <Route path="/cart" element={<Cart />} title="Cart" />
+              <Route path="/account" element={<Account />} title="Account" />
+
+              <Route
+                path="/add-new-product"
+                element={<New_product />}
+                title="New Product"
+              />
+
+              <Route
+                path="/order/:orderId"
+                element={<Single_order />}
+                title="Order"
+              />
+
+              <Route
+                path="/auction/:auctionId"
+                element={<Single_auction />}
+                title="Auction"
+              />
+            </Routes>
+
+            <Footer />
+          </Router>
+        </CartContext.Provider>
+      </UserContext.Provider>
+    );
+  }
 }
 
 export default App;

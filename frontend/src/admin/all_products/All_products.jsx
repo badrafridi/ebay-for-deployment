@@ -20,8 +20,6 @@ export default function All_products() {
   const api = process.env.REACT_APP_API;
 
   const getallproducts = () => {
-
-
     console.log("products function running");
     axios({
       method: "GET",
@@ -67,7 +65,7 @@ export default function All_products() {
         }
       })
       .catch((err) => {
-        console.log(err)
+        console.log(err);
         swal({
           icon: "error",
           title: "Oops...",
@@ -75,7 +73,7 @@ export default function All_products() {
           button: "Ok, sorry",
         });
       });
-  }
+  };
 
   useEffect(() => {
     getallproducts();
@@ -111,39 +109,39 @@ export default function All_products() {
           </thead>
           <tbody>
             {allproducts &&
-              allproducts
-                .map((p) => {
-                  return (
-                    <>
-                      <tr key={p.id}>
-                        <th scope="row">{p.id}</th>
-                        <td>{p.name}</td>
-                        <td>{p.price}</td>
-                        <td>{p.category_name}</td>
-                        <td>{p.status}</td>
-                        <td>{p.type}</td>
-                        <td>{p.seller_name}</td>
-                        <td>{p.seller_phone}</td>
-                        <td><i class="fa fa-times deleteIconforcat" aria-hidden="true" onClick={() => {
-
-                          if (
-                            window.confirm(
-                              "Are you sure you want to delete this product?"
-                            )
-                          ) {
-                            deleteProduct(p.id)
-                          }
-
-                        }}></i></td>
-                      </tr>
-                    </>
-                  );
-                })}
+              allproducts.map((p) => {
+                return (
+                  <>
+                    <tr key={p.id}>
+                      <th scope="row">{p.id}</th>
+                      <td>{p.name}</td>
+                      <td>{p.price}</td>
+                      <td>{p.category_name}</td>
+                      <td>{p.status}</td>
+                      <td>{p.type}</td>
+                      <td>{p.seller_name}</td>
+                      <td>{p.seller_phone}</td>
+                      <td>
+                        <i
+                          class="fa fa-times deleteIconforcat"
+                          aria-hidden="true"
+                          onClick={() => {
+                            if (
+                              window.confirm(
+                                "Are you sure you want to delete this product?"
+                              )
+                            ) {
+                              deleteProduct(p.id);
+                            }
+                          }}
+                        ></i>
+                      </td>
+                    </tr>
+                  </>
+                );
+              })}
           </tbody>
         </table>
-
-
-
       </div>
     </>
   );
