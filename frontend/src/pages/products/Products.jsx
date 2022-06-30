@@ -9,6 +9,7 @@ export default function Products(props) {
   const [allproducts, setAllproducts] = useState([]);
 
   const allProducts = () => {
+    console.log(props);
     axios({
       method: "GET",
       withCredentials: true,

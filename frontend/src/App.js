@@ -135,59 +135,39 @@ function App() {
             <Routes>
               {/* -------- admin routes ---------- */}
               <Route path="/" exact element={<Home />} title="Home" />
-              <Route
-                path="/login"
-                element={usertop ? <Navigate to="/" /> : <Login />}
-                title="Login"
-              />
+              <Route path="/login" element={<Navigate to="/" title="Home" />} />
 
-              <Route path="/products" element={<Products />} title="Products" />
+              <Route path="/products" element={<Products title="Products" />} />
               <Route
                 path="/product/:productId"
-                element={<Single_product />}
-                title="Product"
+                element={<Single_product title="Product" />}
               />
 
               <Route
                 path="/categories"
-                element={<Categories />}
-                title="Categories"
+                element={<Categories title="Categories" />}
               />
               <Route
                 path="/category/:categoryId"
-                element={<Single_category />}
-                title="Category"
+                element={<Single_category title="Category" />}
               />
 
-              <Route
-                path="/cart"
-                element={usertop ? <Cart /> : <Navigate to="/login" />}
-                title="Cart"
-              />
-              <Route
-                path="/account"
-                element={usertop ? <Account /> : <Navigate to="/login" />}
-                title="Account"
-              />
+              <Route path="/cart" element={<Cart title="Cart" />} />
+              <Route path="/account" element={<Account title="Account" />} />
 
               <Route
                 path="/add-new-product"
-                element={usertop ? <New_product /> : <Navigate to="/login" />}
-                title="New Product"
+                element={<New_product title="New Product" />}
               />
 
               <Route
                 path="/order/:orderId"
-                element={usertop ? <Single_order /> : <Navigate to="/login" />}
-                title="Order"
+                element={<Single_order title="Order" />}
               />
 
               <Route
                 path="/auction/:auctionId"
-                element={
-                  usertop ? <Single_auction /> : <Navigate to="/login" />
-                }
-                title="Auction"
+                element={<Single_auction title="Auction" />}
               />
             </Routes>
             <Footer />
@@ -203,25 +183,22 @@ function App() {
             {<Topbar usertop={usertop} />}
             <Routes>
               {/* -------- admin routes ---------- */}
-              <Route path="/" exact element={<Home />} title="Home" />
-              <Route path="/login" element={<Login />} title="Login" />
+              <Route path="/" exact element={<Home title="Home" />} />
+              <Route path="/login" element={<Login title="Login" />} />
 
-              <Route path="/products" element={<Products />} title="Products" />
+              <Route path="/products" element={<Products title="Products" />} />
               <Route
                 path="/product/:productId"
-                element={<Single_product />}
-                title="Product"
+                element={<Single_product title="Product" />}
               />
 
               <Route
                 path="/categories"
-                element={<Categories />}
-                title="Categories"
+                element={<Categories title="Categories" />}
               />
               <Route
                 path="/category/:categoryId"
-                element={<Single_category />}
-                title="Category"
+                element={<Single_category title="Category" />}
               />
             </Routes>
 
