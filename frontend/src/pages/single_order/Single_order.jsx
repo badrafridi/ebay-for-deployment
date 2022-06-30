@@ -6,7 +6,7 @@ import swal from "sweetalert";
 import { UserContext } from "../../userContext";
 import { CartContext } from "../../cartContext";
 
-export default function Single_order() {
+export default function Single_order(props) {
   const api = process.env.REACT_APP_API;
 
   const { usertop, setUsertop } = useContext(UserContext);
@@ -238,6 +238,7 @@ export default function Single_order() {
   };
 
   useEffect(() => {
+    document.title = props.title || "";
     getSingleorder();
   }, []);
   return (

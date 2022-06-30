@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 
-export default function Single_category() {
+export default function Single_category(props) {
   const api = process.env.REACT_APP_API;
   const location = useLocation();
   const path = location.pathname.split("/")[2];
@@ -25,6 +25,7 @@ export default function Single_category() {
   };
 
   useEffect(() => {
+    document.title = props.title || "";
     getProducts();
   }, []);
   return (
@@ -38,7 +39,13 @@ export default function Single_category() {
                   <div className="homeProductsSingle">
                     <Link to={"/product/" + product.id}>
                       {" "}
-                      <img className="productImage" src={product.url.replace('.jpg','.webp').replace('.jpeg','.webp').replace('.png','.webp')}></img>
+                      <img
+                        className="productImage"
+                        src={product.url
+                          .replace(".jpg", ".webp")
+                          .replace(".jpeg", ".webp")
+                          .replace(".png", ".webp")}
+                      ></img>
                       <h4 className="productTitle">{product.name}</h4>
                     </Link>
                   </div>

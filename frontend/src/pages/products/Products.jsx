@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-export default function Products() {
+export default function Products(props) {
   const api = process.env.REACT_APP_API;
   const [search, setSearch] = useState("");
 
@@ -22,6 +22,7 @@ export default function Products() {
       });
   };
   useEffect(() => {
+    document.title = props.title || "";
     allProducts();
   }, []);
   return (
@@ -63,7 +64,13 @@ export default function Products() {
                   <div className="homeProductsSingle" key={product.id}>
                     <Link to={"/product/" + product.id}>
                       {" "}
-                      <img className="productImage" src={product.url.replace('.jpg','.webp').replace('.jpeg','.webp').replace('.png','.webp')}></img>
+                      <img
+                        className="productImage"
+                        src={product.url
+                          .replace(".jpg", ".webp")
+                          .replace(".jpeg", ".webp")
+                          .replace(".png", ".webp")}
+                      ></img>
                       <h4 className="productTitle">{product.name}</h4>
                     </Link>
                   </div>

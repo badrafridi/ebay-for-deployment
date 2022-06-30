@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 import { CartContext } from "../../cartContext";
 
-export default function Cart() {
+export default function Cart(props) {
   const api = process.env.REACT_APP_API;
 
   const { usertop, setUsertop } = useContext(UserContext);
@@ -91,6 +91,7 @@ export default function Cart() {
   };
 
   useEffect(() => {
+    document.title = props.title || "";
     getProducts();
   }, []);
 

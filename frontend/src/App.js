@@ -96,73 +96,26 @@ function App() {
                 title="Login"
               />
 
-              <Route path="/products" element={<Products />} title="Products" />
-              <Route
-                path="/product/:productId"
-                element={<Single_product />}
-                title="Product"
-              />
-
-              <Route
-                path="/categories"
-                element={<Categories />}
-                title="Categories"
-              />
-              <Route
-                path="/category/:categoryId"
-                element={<Single_category />}
-                title="Category"
-              />
-
-              <Route
-                path="/cart"
-                element={usertop ? <Cart /> : <Navigate to="/login" />}
-                title="Cart"
-              />
-              <Route
-                path="/account"
-                element={usertop ? <Account /> : <Navigate to="/login" />}
-                title="Account"
-              />
-
-              <Route
-                path="/add-new-product"
-                element={usertop ? <New_product /> : <Navigate to="/login" />}
-                title="New Product"
-              />
-
-              <Route
-                path="/order/:orderId"
-                element={usertop ? <Single_order /> : <Navigate to="/login" />}
-                title="Order"
-              />
-
-              <Route
-                path="/auction/:auctionId"
-                element={
-                  usertop ? <Single_auction /> : <Navigate to="/login" />
-                }
-                title="Auction"
-              />
-
               {/* ---------------admin routes----------------- */}
               <Route
                 path="admin/all-orders"
-                element={isadmin ? <All_orders /> : <Navigate to="/login" />}
+                element={<All_orders />}
+                title="All orders"
               />
               <Route
                 path="admin/all-auctions"
-                element={isadmin ? <All_auctions /> : <Navigate to="/login" />}
+                element={<All_auctions />}
+                title="All auctions"
               />
               <Route
                 path="admin/all-products"
-                element={isadmin ? <All_products /> : <Navigate to="/login" />}
+                element={<All_products />}
+                title="All products"
               />
               <Route
                 path="admin/categories"
-                element={
-                  isadmin ? <Admin_categories /> : <Navigate to="/login" />
-                }
+                element={<Admin_categories />}
+                title="All categories"
               />
             </Routes>
 
@@ -236,28 +189,7 @@ function App() {
                 }
                 title="Auction"
               />
-
-              {/* ---------------admin routes----------------- */}
-              <Route
-                path="admin/all-orders"
-                element={isadmin ? <All_orders /> : <Navigate to="/login" />}
-              />
-              <Route
-                path="admin/all-auctions"
-                element={isadmin ? <All_auctions /> : <Navigate to="/login" />}
-              />
-              <Route
-                path="admin/all-products"
-                element={isadmin ? <All_products /> : <Navigate to="/login" />}
-              />
-              <Route
-                path="admin/categories"
-                element={
-                  isadmin ? <Admin_categories /> : <Navigate to="/login" />
-                }
-              />
             </Routes>
-
             <Footer />
           </Router>
         </CartContext.Provider>

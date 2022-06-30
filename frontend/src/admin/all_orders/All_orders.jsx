@@ -44,7 +44,7 @@ const columns = [
 //   { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
 // ];
 
-export default function All_orders() {
+export default function All_orders(props) {
   const api = process.env.REACT_APP_API;
 
   const [allorders, setAllorders] = useState([]);
@@ -67,6 +67,7 @@ export default function All_orders() {
   };
 
   useEffect(() => {
+    document.title = props.title || "";
     getallorders();
   }, []);
 

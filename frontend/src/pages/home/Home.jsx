@@ -5,7 +5,7 @@ import "./home.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-export default function Home() {
+export default function Home(props) {
   const [allproducts, setAllproducts] = useState([]);
   const [categories, setCategories] = useState();
   const api = process.env.REACT_APP_API;
@@ -40,6 +40,7 @@ export default function Home() {
   };
 
   useEffect(() => {
+    document.title = props.title || "";
     getAllcategories();
     allProducts();
   }, []);
@@ -64,7 +65,13 @@ export default function Home() {
                 <>
                   <div className="homeCategoriesSingle" key={cat.id}>
                     <Link to={"/category/" + cat.id}>
-                      <img className="categoryImage" src={cat.url.replace('.jpg','.webp').replace('.jpeg','.webp').replace('.png','.webp')}></img>
+                      <img
+                        className="categoryImage"
+                        src={cat.url
+                          .replace(".jpg", ".webp")
+                          .replace(".jpeg", ".webp")
+                          .replace(".png", ".webp")}
+                      ></img>
                       <h4 className="categoryTitle">{cat.name}</h4>
                     </Link>
                   </div>
@@ -89,7 +96,13 @@ export default function Home() {
                   <div className="homeProductsSingle" key={product.id}>
                     <Link to={"/product/" + product.id}>
                       {" "}
-                      <img className="productImage" src={product.url.replace('.jpg','.webp').replace('.jpeg','.webp').replace('.png','.webp')}></img>
+                      <img
+                        className="productImage"
+                        src={product.url
+                          .replace(".jpg", ".webp")
+                          .replace(".jpeg", ".webp")
+                          .replace(".png", ".webp")}
+                      ></img>
                       <h4 className="productTitle">{product.name}</h4>
                     </Link>
                   </div>
@@ -105,7 +118,13 @@ export default function Home() {
                 <div className="homeProductsSingle" key={product.id}>
                   <Link to={"/product/" + product.id}>
                     {" "}
-                    <img className="productImage" src={product.url.replace('.jpg','.webp').replace('.jpeg','.webp').replace('.png','.webp')}></img>
+                    <img
+                      className="productImage"
+                      src={product.url
+                        .replace(".jpg", ".webp")
+                        .replace(".jpeg", ".webp")
+                        .replace(".png", ".webp")}
+                    ></img>
                     <h4 className="productTitle">{product.name}</h4>
                   </Link>
                 </div>

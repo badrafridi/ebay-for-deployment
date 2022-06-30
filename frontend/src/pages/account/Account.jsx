@@ -14,7 +14,7 @@ export default function Account() {
   const [sellingauctionorders, setSellingauctionorders] = useState([]);
   const { usertop, setUsertop } = useContext(UserContext);
 
-  const getSingleUserProducts = () => {
+  const getSingleUserProducts = (props) => {
     axios({
       method: "GET",
       withCredentials: true,
@@ -125,6 +125,7 @@ export default function Account() {
   };
 
   useEffect(() => {
+    document.title = props.title || "";
     getSingleUserProducts();
     getUserOrders();
     getSellingorders();

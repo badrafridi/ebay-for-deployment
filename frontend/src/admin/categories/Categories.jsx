@@ -4,7 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import swal from "sweetalert";
 
-export default function Categories() {
+export default function Categories(props) {
   const api = process.env.REACT_APP_API;
   const [previewSource, setPreviewSource] = useState("");
   const [fileInputState, setFileInputState] = useState("");
@@ -90,8 +90,8 @@ export default function Categories() {
   };
 
   const deleteCategory = (id) => {
-    console.log('deletecategory function running');
-    console.log(id)
+    console.log("deletecategory function running");
+    console.log(id);
 
     axios({
       method: "DELETE",
@@ -102,7 +102,7 @@ export default function Categories() {
       url: `${api + "/deletecategory"}`,
     })
       .then((res) => {
-        console.log(res)
+        console.log(res);
         if (res.data.errno === 1451) {
           swal.fire({
             icon: "error",
@@ -122,7 +122,7 @@ export default function Categories() {
         }
       })
       .catch((err) => {
-        console.log(err)
+        console.log(err);
         swal({
           icon: "error",
           title: "Oops...",
@@ -130,9 +130,10 @@ export default function Categories() {
           button: "Ok, sorry",
         });
       });
-  }
+  };
 
   useEffect(() => {
+    document.title = props.title || "";
     getAllcategories();
   }, []);
 
@@ -173,19 +174,27 @@ export default function Categories() {
               return (
                 <>
                   <div className="homeCategoriesSingle">
-                  <i class="fa fa-times deleteIcon" aria-hidden="true" onClick={() => {
-                    
-                    if (
-                      window.confirm(
-                        "Are you sure you want to delete this category?"
-                      )
-                    ) {
-                      deleteCategory(cat.id)
-                    }
-                    
-                    }}></i>
+                    <i
+                      class="fa fa-times deleteIcon"
+                      aria-hidden="true"
+                      onClick={() => {
+                        if (
+                          window.confirm(
+                            "Are you sure you want to delete this category?"
+                          )
+                        ) {
+                          deleteCategory(cat.id);
+                        }
+                      }}
+                    ></i>
                     <Link to={"/category/" + cat.id}>
-                      <img className="categoryImage" src={cat.url.replace('.jpg','.webp').replace('.jpeg','.webp').replace('.png','.webp')}></img>
+                      <img
+                        className="categoryImage"
+                        src={cat.url
+                          .replace(".jpg", ".webp")
+                          .replace(".jpeg", ".webp")
+                          .replace(".png", ".webp")}
+                      ></img>
                       <h4 className="categoryTitle">{cat.name}</h4>
                     </Link>
                   </div>

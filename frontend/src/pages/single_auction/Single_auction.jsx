@@ -7,7 +7,7 @@ import "./single_auction.css";
 import { UserContext } from "../../userContext";
 import { CartContext } from "../../cartContext";
 
-export default function Single_auction() {
+export default function Single_auction(props) {
   const api = process.env.REACT_APP_API;
   const { usertop, setUsertop } = useContext(UserContext);
   const location = useLocation();
@@ -234,6 +234,7 @@ export default function Single_auction() {
   };
 
   useEffect(() => {
+    document.title = props.title || "";
     getAuctionDetails();
   }, []);
   return (

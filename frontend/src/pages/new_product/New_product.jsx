@@ -4,7 +4,7 @@ import axios from "axios";
 import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
 
-export default function New_product() {
+export default function New_product(props) {
   const api = process.env.REACT_APP_API;
   const [previewSource, setPreviewSource] = useState("");
   const [fileInputState, setFileInputState] = useState("");
@@ -180,6 +180,7 @@ export default function New_product() {
   };
 
   useEffect(() => {
+    document.title = props.title || "";
     getcategories();
   }, []);
 

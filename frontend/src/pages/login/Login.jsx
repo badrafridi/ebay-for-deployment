@@ -1,10 +1,10 @@
 import "./login.css";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import { UserContext } from "../../userContext";
 import swal from "sweetalert";
 
-export default function Login() {
+export default function Login(props) {
   const api = process.env.REACT_APP_API;
 
   const [state, setState] = useState("login");
@@ -105,6 +105,10 @@ export default function Login() {
         console.log(error);
       });
   };
+
+  useEffect(() => {
+    document.title = props.title || "";
+  }, []);
 
   if (state == "login")
     return (

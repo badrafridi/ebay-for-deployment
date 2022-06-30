@@ -17,7 +17,7 @@ const columns = [
   { field: "end_date", headerName: "Auction end date", width: 270 },
 ];
 
-export default function All_auctions() {
+export default function All_auctions(props) {
   const [allauctions, setAllauctions] = useState([]);
 
   const getallauctions = () => {
@@ -40,6 +40,7 @@ export default function All_auctions() {
   };
 
   useEffect(() => {
+    document.title = props.title || "";
     getallauctions();
   }, []);
 

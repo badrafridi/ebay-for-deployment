@@ -15,7 +15,7 @@ const columns = [
   { field: "seller_phone", headerName: "Seller phone", width: 130 },
 ];
 
-export default function All_products() {
+export default function All_products(props) {
   const [allproducts, setAllproducts] = useState([]);
   const api = process.env.REACT_APP_API;
 
@@ -76,6 +76,7 @@ export default function All_products() {
   };
 
   useEffect(() => {
+    document.title = props.title || "";
     getallproducts();
   }, []);
 
