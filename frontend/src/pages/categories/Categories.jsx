@@ -35,7 +35,7 @@ export default function Categories() {
                 <>
                   <div className="homeCategoriesSingle">
                     <Link to={"/category/" + cat.id}>
-                      <img className="categoryImage" src={cat.url}></img>
+                      <img className="categoryImage" src={cat.url.replace('.jpg','.webp').replace('.jpeg','.webp').replace('.png','.webp')}></img>
                       <h4 className="categoryTitle">{cat.name}</h4>
                     </Link>
                   </div>

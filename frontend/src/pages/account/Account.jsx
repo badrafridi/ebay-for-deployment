@@ -177,7 +177,7 @@ export default function Account() {
                     className="feeBlocks buyingOrders"
                   >
                     <div className="first fifty">
-                      <img className="accountProductImage" src={x.url}></img>
+                      <img className="accountProductImage" src={x.url.replace('.jpg','.webp').replace('.jpeg','.webp').replace('.png','.webp')}></img>
                       <h4>{x.name}</h4>
                     </div>
                     <div className="second">{x.price}</div>
@@ -216,7 +216,7 @@ export default function Account() {
                     className="feeBlocks buyingAuctionOrders"
                   >
                     <div className="first fifty">
-                      <img className="accountProductImage" src={x.url}></img>
+                      <img className="accountProductImage" src={x.url.replace('.jpg','.webp').replace('.jpeg','.webp').replace('.png','.webp')}></img>
                       <h4>{x.product_name}</h4>
                     </div>
                     <div className="second">{x.price}</div>
@@ -311,7 +311,7 @@ export default function Account() {
                       <div className="first fifty">
                         <img
                           className="accountProductImage"
-                          src={order.url}
+                          src={order.url.replace('.jpg','.webp').replace('.jpeg','.webp').replace('.png','.webp')}
                         ></img>
                         <h4>{order.name}</h4>
                       </div>
@@ -358,7 +358,7 @@ export default function Account() {
                       <div className="first fifty">
                         <img
                           className="accountProductImage"
-                          src={order.url}
+                          src={order.url.replace('.jpg','.webp').replace('.jpeg','.webp').replace('.png','.webp')}
                         ></img>
                         <h4>{order.product_name}</h4>
                       </div>

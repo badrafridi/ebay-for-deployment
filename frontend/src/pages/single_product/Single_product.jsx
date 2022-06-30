@@ -178,7 +178,7 @@ export default function Single_product() {
     (<>      <div className="page">
       <div className="flexRow twoColumns">
         <div className="flexColumn full productPageProductImageBlock">
-          <img src={product.url ? product.url : ""}></img>
+          <img src={product.url ? product.url.replace('.jpg','.webp').replace('.jpeg','.webp').replace('.png','.webp') : ""}></img>
         </div>
         <div className="flexColumn full productPageProductDetailsBlock">
           <p style={{ fontSize: "14px" }}>
