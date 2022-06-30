@@ -126,7 +126,7 @@ export default function Categories() {
         swal({
           icon: "error",
           title: "Oops...",
-          text: "Can not delete a product while it is in order",
+          text: "Can not delete a category while while there are products in it.",
           button: "Ok, sorry",
         });
       });

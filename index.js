@@ -607,6 +607,24 @@ app.delete("/api/deleteproduct", (req, res) => {
   }
 });
 
+// delete product by admin
+app.delete("/api/deleteproductbyadmin", (req, res) => {
+  if (req.user) {
+    const sqlcheck = "DELETE FROM products WHERE id = ?";
+    db.query(sqlcheck, req.body.id, (err, row) => {
+      if (err) {
+        console.log(err);
+        res.send(err);
+      }
+      if (row) {
+        res.send({ message: "product successfully deleted", row });
+      }
+    });
+  } else {
+    res.send("sorry you are not authenticated");
+  }
+});
+
 
 
 
