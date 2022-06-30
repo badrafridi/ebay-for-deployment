@@ -610,6 +610,7 @@ app.delete("/api/deleteproduct", (req, res) => {
 // delete product by admin
 app.delete("/api/deleteproductbyadmin", (req, res) => {
   if (req.user) {
+    console.log(req.user)
     const sqlcheck = "DELETE FROM products WHERE id = ?";
     db.query(sqlcheck, req.body.id, (err, row) => {
       if (err) {

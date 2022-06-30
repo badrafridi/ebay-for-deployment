@@ -136,6 +136,16 @@ h6 {
   transform: rotate(360deg);
 }
 
+.deleteIconforcat {
+  transition:transform 0.5s;
+  cursor: pointer;
+  font-size: 30px;
+  color: red;
+}
+
+.deleteIconforcat:hover {
+  transform: rotate(360deg);
+}
 
 
 

@@ -121,13 +121,14 @@ export default function All_products() {
                         <td>{p.price}</td>
                         <td>{p.category_name}</td>
                         <td>{p.status}</td>
+                        <td>{p.type}</td>
                         <td>{p.seller_name}</td>
                         <td>{p.seller_phone}</td>
-                        <td><i class="fa fa-times deleteIcon" aria-hidden="true" onClick={() => {
+                        <td><i class="fa fa-times deleteIconforcat" aria-hidden="true" onClick={() => {
 
                           if (
                             window.confirm(
-                              "Are you sure you want to delete this category?"
+                              "Are you sure you want to delete this product?"
                             )
                           ) {
                             deleteProduct(p.id)
