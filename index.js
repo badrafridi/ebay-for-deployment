@@ -619,7 +619,7 @@ app.delete("/api/deleteproduct", (req, res) => {
 // delete category
 app.delete("/api/deletecategory", (req, res) => {
   if (req.user) {
-    const sqlcheck = "DELETE FROM categories WHERE id = ?";
+    const sqlcheck = "DELETE FROM category WHERE id = ?";
     db.query(sqlcheck, req.body.id, (err, row) => {
       if (err) {
         console.log(err);
