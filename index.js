@@ -607,6 +607,48 @@ app.delete("/api/deleteproduct", (req, res) => {
   }
 });
 
+
+
+
+
+
+
+
+
+
+// delete category
+app.delete("/api/deletecategory", (req, res) => {
+  if (req.user) {
+    const sqlcheck = "DELETE FROM categories WHERE id = ?";
+    db.query(sqlcheck, req.body.id, (err, row) => {
+      if (err) {
+        console.log(err);
+        res.send(err);
+      }
+      if (row) {
+        // console.log("user registered successfully");
+        res.send({ message: "category successfully deleted", row });
+      }
+    });
+  } else {
+    res.send("sorry you are not authenticated");
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // get all categories
 app.get("/api/getallcategories", (req, res) => {
   const sqlcheck = "SELECT * FROM category";

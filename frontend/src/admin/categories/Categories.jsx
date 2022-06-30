@@ -89,6 +89,45 @@ export default function Categories() {
       });
   };
 
+  const deleteCategory = (id) => {
+    axios({
+      method: "DELETE",
+      data: {
+        id,
+      },
+      withCredentials: true,
+      url: `${api + "/deletecategory"}`,
+    })
+      .then((res) => {
+        if (res.data.errno === 1451) {
+          swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Something went wrong!",
+            footer: '<a href="">Why do I have this issue?</a>',
+          });
+        }
+        if (res.data.message == "category successfully deleted") {
+          swal({
+            title: "The category has been deleted successfully",
+            text: "",
+            icon: "success",
+            button: "Ok",
+          });
+          getAllcategories();
+        }
+      })
+      .catch((err) => {
+        console.log(err)
+        swal({
+          icon: "error",
+          title: "Oops...",
+          text: "Can not delete a product while it is in order",
+          button: "Ok, sorry",
+        });
+      });
+  }
+
   useEffect(() => {
     getAllcategories();
   }, []);
@@ -130,6 +169,17 @@ export default function Categories() {
               return (
                 <>
                   <div className="homeCategoriesSingle">
+                  <i class="fa fa-times deleteIcon" aria-hidden="true" onClick={() => {
+                    
+                    if (
+                      window.confirm(
+                        "Are you sure you want to delete this product?"
+                      )
+                    ) {
+                      deleteCategory(cat.id)
+                    }
+                    
+                    }}></i>
                     <Link to={"/category/" + cat.id}>
                       <img className="categoryImage" src={cat.url.replace('.jpg','.webp').replace('.jpeg','.webp').replace('.png','.webp')}></img>
                       <h4 className="categoryTitle">{cat.name}</h4>
