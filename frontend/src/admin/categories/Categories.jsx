@@ -90,6 +90,9 @@ export default function Categories() {
   };
 
   const deleteCategory = (id) => {
+    console.log('deletecategory function running');
+    console.log(id)
+
     axios({
       method: "DELETE",
       data: {
@@ -99,6 +102,7 @@ export default function Categories() {
       url: `${api + "/deletecategory"}`,
     })
       .then((res) => {
+        console.log(res)
         if (res.data.errno === 1451) {
           swal.fire({
             icon: "error",
@@ -173,7 +177,7 @@ export default function Categories() {
                     
                     if (
                       window.confirm(
-                        "Are you sure you want to delete this product?"
+                        "Are you sure you want to delete this category?"
                       )
                     ) {
                       deleteCategory(cat.id)
