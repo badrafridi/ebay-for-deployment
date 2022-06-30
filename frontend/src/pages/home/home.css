@@ -1,240 +1,261 @@
-.carousel-root, .carousel.carousel-slider {
-    height:400px;
+.carousel-root,
+.carousel.carousel-slider {
+  height: 400px;
 }
 
-div.carousel-root > div:nth-child(2) {
-    display: none;
+div.carousel-root>div:nth-child(2) {
+  display: none;
 }
 
 .categoryImage {
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 150px;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 150px;
 }
 
 .homeCategoriesBlock {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 }
-.homeCategoriesSingle > a {
-    flex: 0 0 24%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+
+.homeCategoriesSingle>a {
+  flex: 0 0 24%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .categoryTitle {
-    margin-top:15px;
+  margin-top: 15px;
 }
 
 .heading {
-    margin-bottom: 30px;
-    margin-top: 50px;
+  margin-bottom: 30px;
+  margin-top: 50px;
 }
 
 .homeProductsBlock {
-    display: flex;
-    flex-wrap: wrap;
-    /* justify-content: space-between; */
-    gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: space-between; */
+  gap: 20px;
 }
+
 .productImage {
-    width: 300px;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 10px;
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
 }
+
 .productTitle {
-    margin-top:10px;
-    width:300px;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+  margin-top: 10px;
+  width: 300px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 
 }
 
-.homeProductsSingle > a {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom:15px
+.homeProductsSingle>a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 15px
 }
 
 .seeAll {
-    margin-top: 25px;
-    display: flex;
-    font-weight: bold;
-    justify-content: space-around;
+  margin-top: 25px;
+  display: flex;
+  font-weight: bold;
+  justify-content: space-around;
 }
 
-p, a , li , h1, h2, h3, h4, h5, h6 {
-    font-family: "Josefin Sans", "sans-serif";
+p,
+a,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Josefin Sans", "sans-serif";
 }
 
 .tab {
-    background-color: #f3f3f3;
+  background-color: #f3f3f3;
+  width: 100%;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.tabs {
+  display: flex;
+  width: 50%;
+  text-align: center;
+  height: inherit;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.tabs:hover {
+  background-color: #c3c3c3;
+}
+
+.fa-trash {
+  cursor: pointer;
+}
+
+.fa-trash:hover {
+  transform: rotateZ(45deg);
+}
+
+
+
+
+/* ---------------mobile styling--------------- */
+@media screen and (max-width:600px) {
+
+  .carousel-root,
+  .carousel.carousel-slider {
+    height: 215px;
+  }
+
+  .productTitle {
+    margin-top: 10px;
     width: 100%;
-    height: 64px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-  }
-  
-  .tabs {
-    display: flex;
-    width: 50%;
-    text-align: center;
-    height: inherit;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-  }
-  
-  .tabs:hover {
-    background-color: #c3c3c3;
   }
 
-  .fa-trash{
-      cursor: pointer;
-  }
-  .fa-trash:hover{
-    transform: rotateZ(45deg);
+  .productImage {
+    height: 140px;
+    width: 140px;
   }
 
 
+  /* for PRODUCT PAGE  */
 
-
-  /* ---------------mobile styling--------------- */
-  @media screen and (max-width:600px){
-    .carousel-root, .carousel.carousel-slider {
-        height: 215px;
-    }
-
-    .productTitle {
-        margin-top: 10px;
-        width: 100%;
-    }
-
-    .productImage {
-      height: 140px;
-      width: 140px;
-  }
-
-
-/* for PRODUCT PAGE  */
-
-.twoColumns {
+  .twoColumns {
     display: flex;
     flex-direction: column;
-}
-  }
-
-
-  @media screen and (max-width: 600px) {
-
-
-    /* for login page  */
-    div.loginForm>form {
-      padding: 43px !important;
-      width: 90% !important;
-  }
-    /* login page end  */
-    .homeProductsSingle {
-      flex: 0 0 45%;
-    }
-
-    /* ADMIN */
-    /* category page */
-  
-    /* This code is for form  */
-  
-    .createCategoryBlock > form > input {
-      margin-bottom: 15px;
-    }
-    /* Code Ended */
-  
-    /* This code is for category images */
-    .homeCategoriesSingle > a > img.categoryImage {
-      height: 145px;
-      width: 145px;
-    }
-    /* Code Ended */
-  
-    /* THis for is for footer */
-    .footer {
-      padding: 25px !important;
-      height:auto !important;
-      padding:25px !important;
-      justify-content: space-between !important;
-    }
-
-    .footer > div {
-        margin-top:20px !important;
-        flex: 0 1 40% !important;
-    }
-
-    .footer .ulNoStyle {
-      display: flex !important;
-      flex-direction: column !important;
-    }
-    .footer .h3 {
-      margin-top: 10px !important;
-    }
-    /* Code Ended */
-  
-    /* USER */
-    /* Home page */
-    /* Recently Uploaded Products */
-    .homeProductsBlock {
-      gap: 1px;
-      justify-content: space-between;
-    }
-    /* Categories Page */
-    .homeCategoriesBlock {
-      gap: 11px;
-    }
-
-    /* for loading animation  */
-    /* loader */
-.loaderContainer {
-  position: fixed;
-  top:15px;
-  left:0;
-  -ms-flex-align: center;
-  align-items: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  height: 90vh;
-  overflow: hidden;
-  width: 100%;
-  display: flex;
-}
-.arc:before {
-  -webkit-animation: spin 0.5s infinite linear;
-  animation: spin 0.5s infinite linear;
-  border-radius: 100%;
-  border-top: 6px solid #163681;
-  content: "";
-  display: block;
-  height: 50px;
-  width: 50px;
-}
-
-@-webkit-keyframes spin {
-  to {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
   }
 }
 
-@keyframes spin {
-  to {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
+
+@media screen and (max-width: 600px) {
+
+
+  /* for login page  */
+  div.loginForm>form {
+    padding: 43px !important;
+    width: 90% !important;
+  }
+
+  /* login page end  */
+  .homeProductsSingle {
+    flex: 0 0 45%;
+  }
+
+  /* ADMIN */
+  /* category page */
+
+  /* This code is for form  */
+
+  .createCategoryBlock>form>input {
+    margin-bottom: 15px;
+  }
+
+  /* Code Ended */
+
+  /* This code is for category images */
+  .homeCategoriesSingle>a>img.categoryImage {
+    height: 145px;
+    width: 145px;
+  }
+
+  /* Code Ended */
+
+  /* THis for is for footer */
+  .footer {
+    padding: 25px !important;
+    height: auto !important;
+    padding: 25px !important;
+    justify-content: space-between !important;
+  }
+
+  .footer>div {
+    margin-top: 20px !important;
+    flex: 0 1 40% !important;
+  }
+
+  .footer .ulNoStyle {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .footer .h3 {
+    margin-top: 10px !important;
+  }
+
+  /* Code Ended */
+
+  /* USER */
+  /* Home page */
+  /* Recently Uploaded Products */
+  .homeProductsBlock {
+    gap: 1px;
+    justify-content: space-between;
+  }
+
+  /* Categories Page */
+  .homeCategoriesBlock {
+    gap: 11px;
+  }
+
+  /* for loading animation  */
+  /* loader */
+  .loaderContainer {
+    position: fixed;
+    top: 15px;
+    left: 0;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    height: 90vh;
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+  }
+
+  .arc:before {
+    -webkit-animation: spin 0.5s infinite linear;
+    animation: spin 0.5s infinite linear;
+    border-radius: 100%;
+    border-top: 6px solid #163681;
+    content: "";
+    display: block;
+    height: 50px;
+    width: 50px;
+  }
+
+  @-webkit-keyframes spin {
+    to {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes spin {
+    to {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
   }
 }
-  }
-  
