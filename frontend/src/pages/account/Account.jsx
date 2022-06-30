@@ -261,7 +261,7 @@ export default function Account() {
                       <div className="first fifty">
                         <img
                           className="accountProductImage"
-                          src={product.url}
+                          src={product.url.replace('.jpg','.webp').replace('.jpeg','.webp').replace('.png','.webp')}
                         ></img>
                         <h4>{product.name}</h4>
                       </div>
