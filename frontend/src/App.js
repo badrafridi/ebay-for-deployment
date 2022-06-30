@@ -291,15 +291,6 @@ function App() {
                 element={<Single_category />}
                 title="Category"
               />
-
-              <Route path="/cart" element={<Cart />} title="Cart" />
-              <Route path="/account" element={<Account />} title="Account" />
-
-              <Route
-                path="/add-new-product"
-                element={<New_product />}
-                title="New Product"
-              />
             </Routes>
 
             <Footer />
