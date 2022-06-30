@@ -2,11 +2,11 @@ import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-export default function Categories() {
+export default function Categories(props) {
   const api = process.env.REACT_APP_API;
   const [categories, setCategories] = useState();
 
-  const getAllcategories = (props) => {
+  const getAllcategories = () => {
     axios({
       method: "GET",
       withCredentials: true,

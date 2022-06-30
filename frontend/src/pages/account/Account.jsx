@@ -5,7 +5,7 @@ import swal from "sweetalert";
 import "./account.css";
 import { UserContext } from "../../userContext";
 
-export default function Account() {
+export default function Account(props) {
   const api = process.env.REACT_APP_API;
   const [userproducts, setUserproducts] = useState([]);
   const [buyingorders, setBuyingorders] = useState([]);
@@ -14,7 +14,7 @@ export default function Account() {
   const [sellingauctionorders, setSellingauctionorders] = useState([]);
   const { usertop, setUsertop } = useContext(UserContext);
 
-  const getSingleUserProducts = (props) => {
+  const getSingleUserProducts = () => {
     axios({
       method: "GET",
       withCredentials: true,
