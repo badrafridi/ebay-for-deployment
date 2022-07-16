@@ -97,29 +97,82 @@ app.post("/api/upload", async (req, res) => {
   }
 });
 
-// cron job function to end auction timings
-const cronFunc = (date, product_id) => {
-  console.log("cron func called because of adding new product");
-  console.log(
-    "cron function running to check if the time of auction has ended..."
-  );
-  const someDate = new Date(date);
-  console.log(
-    "cron function is checking if we have touched this date > " + someDate
-  );
-  const job = schedule.scheduleJob(someDate, function () {
-    const sqlcheck = `UPDATE products SET status = 'sold' WHERE id = ${product_id}`;
-    db.query(sqlcheck, product_id, (err, row) => {
-      if (err) {
-        console.log(err);
-      }
-      if (row) {
-        console.log(row);
-        // console.log("user registered successfully");
-      }
-    });
+///////////////////new
+
+'SELECT id FROM `auctions` WHERE end_date < DATE(NOW())'
+
+
+
+
+//// final
+
+
+
+
+
+
+
+const job = schedule.scheduleJob("*/20 * * * *", function () {
+  const sqlcheck = `UPDATE
+          products
+      SET
+          status = "sold"
+      WHERE
+          id IN(
+          SELECT
+              product_id
+          FROM
+              auctions
+          WHERE
+              end_date < DATE(NOW()))`;
+  db.query(sqlcheck, (err, row) => {
+    if (err) {
+      console.log(err);
+    }
+    if (row) {
+      console.log("cron job run successfully");
+      console.log(row);
+    }
   });
-};
+})
+
+
+
+
+////////////////////new end
+
+
+
+
+
+
+
+
+
+
+// cron job function to end auction timings
+// const cronFunc = (date, product_id) => {
+//   console.log("cron func called because of adding new product");
+//   console.log(
+//     "cron function running to check if the time of auction has ended..."
+//   );
+//   const someDate = new Date(date);
+//   console.log(
+//     "cron function is checking if we have touched this date > " + someDate
+//   );
+//   const job = schedule.scheduleJob(someDate, function () {
+//     const sqlcheck = `UPDATE products SET status = 'sold' WHERE id = ${product_id}`;
+//     db.query(sqlcheck, product_id, (err, row) => {
+//       if (err) {
+//         console.log(err);
+//       }
+//       if (row) {
+//         console.log(row);
+//         // console.log("user registered successfully");
+//       }
+//     });
+//   });
+// };
 
 // register user (admin,teacher,student)
 app.post("/api/register", async (req, res) => {
@@ -164,7 +217,7 @@ app.post("/api/register", async (req, res) => {
         }
       });
     }
-  } catch {}
+  } catch { }
 });
 
 app.post("/api/login", (req, res, next) => {
@@ -321,7 +374,7 @@ app.post("/api/addnewproduct", (req, res) => {
               res.send(err);
             }
             if (row) {
-              cronFunc(date_end, product_id);
+              // cronFunc(date_end, product_id);
               res.send({ message: "auction product added successfully", row });
             }
           });
