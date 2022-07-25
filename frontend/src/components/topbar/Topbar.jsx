@@ -68,7 +68,7 @@ export default function Topbar() {
             <div className="topbar" id="desktopHeader">
               <div className="topLeft">
                 <Link to="/">
-                  <img width={150} src={logo} />
+                  <img width={70} src={logo} />
                 </Link>
               </div>
               <div className="topMiddle">
@@ -114,7 +114,7 @@ export default function Topbar() {
           <nav>
             <div class="log-container-mob">
               <Link to="/" class="logo-mob">
-                <img width={150} src={logo} />
+                <img width={10} src={logo}/>
               </Link>
             </div>
             <div>
