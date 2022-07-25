@@ -96,8 +96,9 @@
 
   @media screen and (max-width:600px){
     .logo-mob > img {
-      height: 89px;
-    object-fit: contain;
+      height: 89px !important;
+    object-fit: contain !important;
+    object-position: left !important;
     }
     #desktopHeader{
       display:none;
@@ -163,7 +164,7 @@
         transition: all .5s;
         padding-left:0px;
     }
-    
+
     .nav-list-mob li {
         opacity: 0;
         line-height: 30px;
